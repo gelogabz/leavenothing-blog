@@ -1,0 +1,83 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import JournalRow from '../../components/JournalRow.astro';
+import { TOPIC_META } from '../../consts';
+import { tagSlug } from '../../lib/format';
+import { url } from '../../lib/url';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+
+const topics = Object.entries(TOPIC_META)
+  .map(([key, meta]) => ({
+    key,
+    ...meta,
+    posts: posts
+      .filter((post) => post.data.tags.includes(key))
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+  }))
+  .filter((topic) => topic.posts.length > 0)
+  .sort((a, b) => b.posts.length - a.posts.length);
+---
+
+<BaseLayout
+  title="Topics"
+  description="Subjects covered in the LeaveNothing journal: forests, coasts, wildlife, climate, people, and Philippine ecology."
+>
+  <header class="page-head">
+    <div class="shell page-head-inner">
+      <div>
+        <p class="eyebrow">Subjects</p>
+        <h1>Threads to follow.</h1>
+      </div>
+      <p class="page-deck">
+        The journal is filed by the systems it tries to describe. Pick a thread and read it
+        in order, or wander between them.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="shell">
+      <ul class="topic-list">
+        {
+          topics.map((topic, index) => (
+            <li>
+              <a class="topic-row" href={url(`/tags/${tagSlug(topic.key)}/`)} data-reveal>
+                <span class="topic-index">{String(index + 1).padStart(2, '0')}</span>
+                <h2>{topic.label}</h2>
+                <p>{topic.blurb}</p>
+                <span class="topic-count">
+                  {topic.posts.length} {topic.posts.length === 1 ? 'essay' : 'essays'}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">Latest in every thread</p>
+          <h2>Start anywhere</h2>
+        </div>
+        <a class="link-arrow section-link" href={url('/blog/')}>Full archive</a>
+      </div>
+
+      <div class="journal-list">
+        {
+          posts
+            .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+            .map((post) => (
+              <JournalRow post={post} />
+            ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

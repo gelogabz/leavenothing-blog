@@ -1,0 +1,119 @@
+---
+import { Image } from 'astro:assets';
+import { PHOTO_TOPICS, photos, type PhotoTopic } from '../data/photos';
+
+const topics = Object.entries(PHOTO_TOPICS) as [PhotoTopic, string][];
+---
+
+<div class="filter-bar" role="group" aria-label="Filter photographs by subject" data-filters>
+  <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
+  {
+    topics.map(([key, label]) => (
+      <button class="filter-btn" type="button" data-filter={key} aria-pressed="false">
+        {label}
+      </button>
+    ))
+  }
+</div>
+
+<p class="sr-only" aria-live="polite" data-photo-count>{photos.length} photographs</p>
+
+<div class="photo-grid" data-photo-grid>
+  {
+    photos.map((photo) => {
+      const portrait = photo.src.width < photo.src.height;
+      return (
+        <button
+          class="photo-card"
+          type="button"
+          data-topic={photo.topic}
+          data-orientation={portrait ? 'portrait' : 'landscape'}
+          data-featured={photo.featured ? 'true' : 'false'}
+          data-full={photo.src.src}
+          data-caption={photo.caption}
+          data-alt={photo.alt}
+          aria-label={`View photograph: ${photo.alt}`}
+        >
+          <Image
+            src={photo.src}
+            alt=""
+            widths={[400, 640, 900, 1200]}
+            sizes="(max-width: 520px) 100vw, (max-width: 760px) 50vw, (max-width: 1100px) 50vw, 33vw"
+            format="webp"
+            quality={82}
+            loading="lazy"
+          />
+          <span class="photo-card-caption">{photo.caption}</span>
+        </button>
+      );
+    })
+  }
+</div>
+
+<dialog class="lightbox" data-lightbox aria-label="Photograph viewer">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close photograph">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+        <path d="M6 6l12 12M18 6 6 18" stroke-linecap="round" />
+      </svg>
+    </button>
+    <img data-lightbox-image alt="" />
+    <p class="lightbox-caption" data-lightbox-caption></p>
+  </div>
+</dialog>
+
+<script>
+  const filterBar = document.querySelector<HTMLElement>('[data-filters]');
+  const grid = document.querySelector<HTMLElement>('[data-photo-grid]');
+  const count = document.querySelector<HTMLElement>('[data-photo-count]');
+  const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox]');
+  const dialogImage = document.querySelector<HTMLImageElement>('[data-lightbox-image]');
+  const dialogCaption = document.querySelector<HTMLElement>('[data-lightbox-caption]');
+  const closeButton = document.querySelector<HTMLButtonElement>('[data-lightbox-close]');
+
+  const cards = Array.from(document.querySelectorAll<HTMLButtonElement>('.photo-card'));
+
+  const updateCount = (visible: number) => {
+    if (!count) return;
+    count.textContent = `${visible} photograph${visible === 1 ? '' : 's'}`;
+  };
+
+  filterBar?.addEventListener('click', (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-filter]');
+    if (!button) return;
+
+    const filter = button.dataset.filter ?? 'all';
+    filterBar.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach((item) => {
+      item.setAttribute('aria-pressed', String(item === button));
+    });
+
+    let visible = 0;
+    cards.forEach((card) => {
+      const show = filter === 'all' || card.dataset.topic === filter;
+      card.hidden = !show;
+      if (show) visible += 1;
+    });
+
+    updateCount(visible);
+  });
+
+  grid?.addEventListener('click', (event) => {
+    const card = (event.target as HTMLElement).closest<HTMLButtonElement>('.photo-card');
+    if (!card || !dialog || !dialogImage || !dialogCaption) return;
+
+    dialogImage.src = card.dataset.full ?? '';
+    dialogImage.alt = card.dataset.alt ?? '';
+    dialogCaption.textContent = card.dataset.caption ?? '';
+    dialog.showModal();
+  });
+
+  closeButton?.addEventListener('click', () => dialog?.close());
+
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+
+  dialog?.addEventListener('close', () => {
+    if (dialogImage) dialogImage.src = '';
+  });
+</script>

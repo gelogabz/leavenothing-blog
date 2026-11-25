@@ -1,0 +1,263 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { SITE, TOPIC_META } from '../consts';
+import { formatDate, tagSlug } from '../lib/format';
+import { featuredPhotos, photos } from '../data/photos';
+
+import heroImage from '../assets/photography/01-sea-of-clouds.jpg';
+import aboutImage from '../assets/photography/34-branches-at-dusk.jpg';
+import { url } from '../lib/url';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const featured = posts[0];
+const latest = posts.slice(1, 4);
+
+const topicCounts = Object.entries(TOPIC_META)
+  .map(([key, meta]) => ({
+    key,
+    ...meta,
+    count: posts.filter((post) => post.data.tags.includes(key)).length,
+  }))
+  .filter((topic) => topic.count > 0)
+  .sort((a, b) => b.count - a.count);
+
+const strip = featuredPhotos.slice(0, 6);
+---
+
+<BaseLayout>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-media">
+      <Image
+        src={heroImage}
+        alt="A sea of cloud spilling between forested mountain ridges at dawn."
+        widths={[800, 1200, 1600, 2000]}
+        sizes="100vw"
+        format="webp"
+        quality={84}
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+
+    <div class="shell hero-inner">
+      <p class="eyebrow">Field notes · Philippines</p>
+      <h1 id="hero-title">Leave nothing but <em>attention</em>.</h1>
+      <p class="hero-deck">
+        A personal journal about the forests, coasts, and creatures of the Philippines —
+        and the people quietly keeping them.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn--solid-light" href={url('/blog/')}>Read the journal</a>
+        <a class="btn btn--light" href={url('/photography/')}>See the photography</a>
+      </div>
+
+      <div class="hero-foot">
+        <span>Photograph 01 — sea of clouds, dawn</span>
+        <a class="scroll-cue" href="#intro">Scroll to the field notes</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="intro">
+    <div class="shell intro-grid">
+      <p class="intro-statement" data-reveal>
+        The best conservation stories are rarely <em>loud</em>.
+      </p>
+
+      <div class="intro-aside" data-reveal>
+        <p>
+          They are rangers walking the same ridge, farmers reading the weather, volunteers
+          hauling someone else's plastic off a beach. This journal is a place to notice that
+          work — and the places it protects.
+        </p>
+        <p>
+          No hot takes, no doom scroll. Just field notes, photographs, and the occasional
+          question worth sitting with.
+        </p>
+
+        <ul class="intro-facts">
+          <li>
+            <strong>{String(posts.length).padStart(2, '0')}</strong>
+            <span>Essays</span>
+          </li>
+          <li>
+            <strong>{photos.length}</strong>
+            <span>Photographs</span>
+          </li>
+          <li>
+            <strong>{String(topicCounts.length).padStart(2, '0')}</strong>
+            <span>Subjects</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {
+    featured && (
+      <section class="section" aria-labelledby="featured-title">
+        <div class="shell">
+          <div class="section-head" data-reveal>
+            <div>
+              <p class="eyebrow">Latest from the journal</p>
+              <h2 id="featured-title">Start here</h2>
+            </div>
+            <a class="link-arrow section-link" href={url('/blog/')}>All essays</a>
+          </div>
+
+          <article class="feature" data-reveal>
+            <a class="feature-media" href={url(`/blog/${featured.id}/`)} aria-hidden="true" tabindex="-1">
+              <Image
+                src={featured.data.heroImage}
+                alt={featured.data.heroAlt}
+                widths={[640, 960, 1280, 1600]}
+                sizes="(max-width: 980px) 100vw, 60vw"
+                format="webp"
+                quality={84}
+              />
+            </a>
+
+            <div class="feature-body">
+              <p class="eyebrow">{TOPIC_META[featured.data.tags[0]]?.label ?? 'Field note'}</p>
+              <h2><a href={url(`/blog/${featured.id}/`)}>{featured.data.title}</a></h2>
+              <p class="summary">{featured.data.description}</p>
+              <div class="feature-meta">
+                <time datetime={featured.data.pubDate.toISOString()}>
+                  {formatDate(featured.data.pubDate)}
+                </time>
+                <span>Read the essay</span>
+              </div>
+              <a class="link-arrow" href={url(`/blog/${featured.id}/`)} style="margin-top:1.5rem;">
+                Open essay
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    latest.length > 0 && (
+      <section class="section" aria-labelledby="more-title">
+        <div class="shell">
+          <div class="section-head" data-reveal>
+            <div>
+              <p class="eyebrow">More from the field</p>
+              <h2 id="more-title">Recent notes</h2>
+            </div>
+            <a class="link-arrow section-link" href={url('/rss.xml')}>RSS</a>
+          </div>
+
+          <div class="post-grid">
+            {latest.map((post) => (
+              <PostCard post={post} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section" aria-labelledby="frames-title">
+    <div class="shell-wide">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">Field frames</p>
+          <h2 id="frames-title">What the light was doing</h2>
+        </div>
+        <a class="link-arrow section-link" href={url('/photography/')}>Full archive</a>
+      </div>
+
+      <div class="photo-strip">
+        {
+          strip.map((photo) => (
+            <a
+              class="photo-tile"
+              href={url('/photography/')}
+              data-caption={photo.caption}
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                widths={[400, 640, 900, 1200]}
+                sizes="(max-width: 760px) 100vw, 33vw"
+                format="webp"
+                quality={82}
+                loading="lazy"
+              />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="topics-title">
+    <div class="shell">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">Follow a thread</p>
+          <h2 id="topics-title">Subjects</h2>
+        </div>
+        <a class="link-arrow section-link" href={url('/topics/')}>All topics</a>
+      </div>
+
+      <ul class="topic-list">
+        {
+          topicCounts.map((topic, index) => (
+            <li>
+              <a class="topic-row" href={url(`/tags/${tagSlug(topic.key)}/`)} data-reveal>
+                <span class="topic-index">{String(index + 1).padStart(2, '0')}</span>
+                <h3>{topic.label}</h3>
+                <p>{topic.blurb}</p>
+                <span class="topic-count">
+                  {topic.count} {topic.count === 1 ? 'essay' : 'essays'}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="about-title">
+    <div class="shell split">
+      <div class="split-media" data-reveal>
+        <Image
+          src={aboutImage}
+          alt="Bare tree branches silhouetted against a blue and orange dusk sky."
+          widths={[480, 720, 960]}
+          sizes="(max-width: 980px) 100vw, 50vw"
+          format="webp"
+          quality={82}
+          loading="lazy"
+        />
+      </div>
+
+      <div class="split-body" data-reveal>
+        <p class="eyebrow">Why this journal exists</p>
+        <h2 id="about-title">A record of looking closely.</h2>
+        <p>
+          I'm {SITE.author}. I take photographs on walks, hikes, and the occasional wrong turn.
+          This site is where those frames become notes — about what lives here, what is
+          changing, and what can still be done.
+        </p>
+        <p>
+          The name is the rule: take only photographs, leave only footprints. Sometimes not
+          even those.
+        </p>
+        <a class="btn btn--ghost" href={url('/about/')}>About the journal</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

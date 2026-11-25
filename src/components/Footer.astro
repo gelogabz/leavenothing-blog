@@ -1,0 +1,51 @@
+---
+import Newsletter from './Newsletter.astro';
+import { SITE, SOCIAL } from '../consts';
+import { url } from '../lib/url';
+
+const year = new Date().getFullYear();
+---
+
+<Newsletter />
+
+<footer class="site-footer">
+  <div class="shell footer-main">
+    <div class="footer-brand">
+      <p class="footer-wordmark">Leave<br />Nothing<span>.</span></p>
+      <p class="footer-blurb">
+        A personal field journal about the nature of the Philippines, and the quiet work of
+        keeping it.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href={url('/blog/')}>Journal</a></li>
+        <li><a href={url('/photography/')}>Photography</a></li>
+        <li><a href={url('/topics/')}>Topics</a></li>
+        <li><a href={url('/resources/')}>Resources</a></li>
+        <li><a href={url('/about/')}>About</a></li>
+        <li><a href={url('/contact/')}>Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h2>Follow</h2>
+      <ul>
+        {SOCIAL.map((item) => (
+          <li>
+            <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>
+          </li>
+        ))}
+        <li><a href={url('/rss.xml')}>RSS feed</a></li>
+        <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="shell footer-bottom">
+    <p>© {year} {SITE.author}. Photographs and words, unless noted.</p>
+    <p>Built with Astro · set in Newsreader &amp; Inter</p>
+  </div>
+</footer>

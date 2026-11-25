@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, readingTime, tagLabel } from '../lib/format';
+import { url } from '../lib/url';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, heroImage, tags } = post.data;
+---
+
+<a class="journal-row" href={url(`/blog/${post.id}/`)} data-reveal>
+  <span class="journal-thumb" aria-hidden="true">
+    <Image
+      src={heroImage}
+      alt=""
+      widths={[240, 360, 520]}
+      sizes="(max-width: 760px) 100vw, 11rem"
+      format="webp"
+      quality={80}
+      loading="lazy"
+    />
+  </span>
+
+  <span class="journal-body">
+    <h2>{title}</h2>
+    <p>{description}</p>
+    <span class="journal-meta">
+      <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+      <span>{readingTime(post.body)} min read</span>
+      <span>{tags.slice(0, 2).map(tagLabel).join(' / ')}</span>
+    </span>
+  </span>
+
+  <span class="journal-side" aria-hidden="true">
+    <span>{tagLabel(tags[0] ?? 'Field note')}</span>
+    <span class="arrow">↗</span>
+  </span>
+</a>

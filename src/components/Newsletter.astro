@@ -1,0 +1,54 @@
+---
+import { NEWSLETTER_ENDPOINT, SITE } from '../consts';
+---
+
+<section class="newsletter" aria-labelledby="newsletter-title">
+  <div class="shell newsletter-grid">
+    <div>
+      <p class="eyebrow">Letters from the field</p>
+      <h2 id="newsletter-title">A slower kind of inbox.</h2>
+      <p>
+        Occasional notes on Philippine forests, coasts, and the people looking after them —
+        plus new photographs, when the light is worth sharing.
+      </p>
+    </div>
+
+    <div>
+      {
+        NEWSLETTER_ENDPOINT ? (
+          <form class="newsletter-form" action={NEWSLETTER_ENDPOINT} method="post" target="_blank">
+            <label class="sr-only" for="newsletter-email">
+              Email address
+            </label>
+            <input
+              id="newsletter-email"
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+            <input type="hidden" name="source" value="leavenothing.org" />
+            <button class="btn btn--solid-light" type="submit">
+              Join the list
+            </button>
+          </form>
+        ) : (
+          <div class="newsletter-fallback">
+            <p class="newsletter-note">
+              The letter is still being written. For now, say hello at{' '}
+              <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+            </p>
+            <a
+              class="btn btn--solid-light"
+              href={`mailto:${SITE.email}?subject=Hello%20from%20leavenothing.org`}
+            >
+              Write to me
+            </a>
+          </div>
+        )
+      }
+      <p class="newsletter-note">No tracking pixels. Unsubscribe whenever you like.</p>
+    </div>
+  </div>
+</section>

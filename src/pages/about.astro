@@ -1,0 +1,154 @@
+---
+import { Image } from 'astro:assets';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../consts';
+
+import portrait from '../assets/photography/08-crater-lake.jpg';
+import ridge from '../assets/photography/09-ridge-first-light.jpg';
+import { url } from '../lib/url';
+
+const principles = [
+  {
+    title: 'Look before you frame',
+    body: 'A photograph is a decision about what to leave out. Notice what the frame excludes — the road, the rubbish, the people who live there.',
+  },
+  {
+    title: 'Take only photographs',
+    body: 'Stay on trails, pack out everything, never pick or bait, and do not geotag places that cannot absorb the attention.',
+  },
+  {
+    title: 'Credit the people who know the place',
+    body: 'Local guides, rangers, farmers, and communities do the long-term work. The least a visitor can do is name them and pay them.',
+  },
+  {
+    title: 'Prefer the boring solution',
+    body: 'Waste collection, sewage, watershed protection, and land-use rules are less photogenic than a cleanup, and far more effective.',
+  },
+  {
+    title: 'Stay slow',
+    body: 'One essay a month, written carefully, beats a feed. The journal is meant to be read, not scrolled.',
+  },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="LeaveNothing is a personal field journal by Gelo Baring about Philippine nature, photography, and conservation."
+>
+  <section class="about-hero shell">
+    <div>
+      <p class="eyebrow">About the journal</p>
+      <h1>A record of looking closely.</h1>
+      <p>
+        I'm {SITE.author}. I take photographs on walks, hikes, and the occasional wrong turn.
+        LeaveNothing is where those frames become notes about what lives here, what is
+        changing, and what can still be done.
+      </p>
+    </div>
+
+    <div class="about-portrait" data-reveal>
+      <Image
+        src={portrait}
+        alt="The author, in a cap, sitting on a rocky slope above a green crater lake."
+        widths={[400, 640, 900]}
+        sizes="(max-width: 980px) 100vw, 34vw"
+        format="webp"
+        quality={82}
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <section class="shell about-grid">
+    <p class="about-index">01</p>
+    <div class="prose">
+      <h2>Why this exists</h2>
+      <p>
+        Most environmental writing is either a warning or a brochure. One says everything is
+        falling apart. The other says a weekend trip will fix it. Neither is much help if you
+        actually want to understand a place.
+      </p>
+      <p>
+        This journal is an attempt at something slower: essays about the systems that keep the
+        Philippines alive — forests, watersheds, coasts, farms — and the people who maintain
+        them without much attention.
+      </p>
+      <p>
+        The name comes from the old outdoor rule: take only photographs, leave only footprints.
+        In practice it is harder than it sounds. A geotag can send a thousand people to a
+        fragile trail. A beautiful frame can make a damaged place look healthy. So the rule
+        here is slightly amended: <strong>leave nothing but attention</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section class="shell about-grid">
+    <p class="about-index">02</p>
+    <div class="prose">
+      <h2>How it is made</h2>
+      <p>
+        Every essay starts with a place I have actually walked, and a question I could not
+        answer from the trail. I read the government bulletins, the scientific papers, the
+        community reports. I ask people who know more than I do. Then I write it down as
+        plainly as I can.
+      </p>
+      <p>
+        Photographs are mine unless credited. They are made on foot, handheld, in whatever
+        light was available. Nothing is baited, staged, or drone-flown over wildlife and
+        villages.
+      </p>
+      <p>
+        There is no comment section, no tracking pixels, and no growth strategy. If you want
+        to follow along, the <a href={url('/rss.xml')}>RSS feed</a> and the occasional letter are the
+        whole system.
+      </p>
+    </div>
+  </section>
+
+  <section class="shell about-grid">
+    <p class="about-index">03</p>
+    <div>
+      <h2>Working principles</h2>
+      <ul class="principle-list" style="margin-top:1.5rem;">
+        {
+          principles.map((principle, index) => (
+            <li>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <div>
+                <strong>{principle.title}</strong>
+                <p>{principle.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell split">
+      <div class="split-media" data-reveal>
+        <Image
+          src={ridge}
+          alt="A jagged mountain ridge lit by early sun, with tall grass in the foreground."
+          widths={[480, 720, 960]}
+          sizes="(max-width: 980px) 100vw, 45vw"
+          format="webp"
+          quality={82}
+          loading="lazy"
+        />
+      </div>
+      <div class="split-body" data-reveal>
+        <p class="eyebrow">Work with me</p>
+        <h2>Editorial, photography, and slow collaborations.</h2>
+        <p>
+          I write and photograph for publications, conservation groups, and travel projects
+          that are willing to be honest about the places they cover. I am not interested in
+          destination marketing or greenwashing.
+        </p>
+        <a class="btn btn--ghost" href={url('/contact/')}>Start a conversation</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

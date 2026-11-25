@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoGallery from '../components/PhotoGallery.astro';
+import { photos } from '../data/photos';
+import { url } from '../lib/url';
+
+const landscape = photos.filter((photo) => photo.src.width >= photo.src.height).length;
+const portrait = photos.length - landscape;
+---
+
+<BaseLayout
+  title="Photography"
+  description="A field archive of Philippine mountains, forests, coasts, and the people moving through them."
+>
+  <header class="page-head">
+    <div class="shell page-head-inner">
+      <div>
+        <p class="eyebrow">Field archive</p>
+        <h1>What the light was doing.</h1>
+      </div>
+      <p class="page-deck">
+        {photos.length} photographs from walks, hikes, and the occasional wrong turn. No
+        drone shots, no baited wildlife, no coordinates for fragile places.
+      </p>
+    </div>
+  </header>
+
+  <section class="shell" aria-labelledby="archive-heading">
+    <h2 class="sr-only" id="archive-heading">Photograph archive</h2>
+    <PhotoGallery />
+  </section>
+
+  <section class="section">
+    <div class="shell split">
+      <div class="split-body" data-reveal>
+        <p class="eyebrow">How these are made</p>
+        <h2>Slow, small, and mostly on foot.</h2>
+        <p>
+          Everything here was made with a handheld camera on ordinary walks. The point is not
+          technical perfection — it is paying attention long enough for something to happen.
+        </p>
+        <p>
+          Photographs are free to view and share with credit. For commercial use, prints, or
+          editorial licensing, <a href={url('/contact/')}>get in touch</a>.
+        </p>
+      </div>
+      <div class="split-media" data-reveal>
+        <Image
+          src={photos[20].src}
+          alt={photos[20].alt}
+          widths={[480, 720, 960]}
+          sizes="(max-width: 980px) 100vw, 45vw"
+          format="webp"
+          quality={82}
+          loading="lazy"
+          style="width:100%;height:100%;object-fit:cover;"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell intro-grid">
+      <p class="intro-statement" data-reveal>
+        {landscape} in landscape. {portrait} in portrait. All of them <em>places</em>.
+      </p>
+      <div class="intro-aside" data-reveal>
+        <p>
+          The archive spans mountain ridges, pine forest, rice terraces, crater lakes, tidal
+          flats, and a few front yards. They are grouped by subject rather than location,
+          because the subjects are what connect them.
+        </p>
+        <p>
+          If a photograph makes a place look untouched, remember that someone lives downstream
+          of it. That is usually the more interesting story.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

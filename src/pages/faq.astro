@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../consts';
+import { url } from '../lib/url';
+
+const faqs = [
+  {
+    question: 'What is LeaveNothing?',
+    answer:
+      'A personal field journal about the nature of the Philippines: forests, coasts, wildlife, climate, and the people doing long-term conservation work. It is written and photographed by one person, slowly.',
+  },
+  {
+    question: 'Is this a conservation organisation?',
+    answer:
+      'No. It is a journal. It does not run projects, accept donations, or speak for any community. Where I write about an organisation, I link to it so you can support it directly.',
+  },
+  {
+    question: 'Can I use the photographs?',
+    answer:
+      'Personal and editorial use with credit is fine — link back to this site and name the photographer. Commercial use, prints, and campaigns need written permission. Start with the contact page.',
+  },
+  {
+    question: 'Why are there no exact locations?',
+    answer:
+      'Because attention can damage a place. Fragile trails, nesting areas, and community sites do not need a public pin. I name the region, and the rough access, and leave the rest to local guides.',
+  },
+  {
+    question: 'Do you accept guest posts or sponsored content?',
+    answer:
+      'No. Every essay is written by me, and nothing on the site is paid placement. Books and sources may be linked because they are useful, not because of an affiliate deal.',
+  },
+  {
+    question: 'How often do you publish?',
+    answer:
+      'Roughly monthly, sometimes less. Essays take time to report and photograph properly. The RSS feed is the best way to know when something new is out.',
+  },
+  {
+    question: 'I found an error. What now?',
+    answer:
+      'Tell me. Send the essay, the claim, and the source. Corrections are made in the text and noted at the bottom of the essay with the date.',
+  },
+  {
+    question: 'Can I republish an essay?',
+    answer:
+      'Ask first. Short excerpts with a link are welcome. Full reprints are sometimes possible for non-commercial publications, usually with a delay after original publication.',
+  },
+  {
+    question: 'How is the site built?',
+    answer:
+      'Astro, static HTML, hand-written CSS, and no tracking. Fonts are self-hosted. There is no comment system and no analytics script beyond what the host provides.',
+  },
+  {
+    question: 'How do I support the work?',
+    answer:
+      'Read it, share it, and support the organisations named in the essays. If you want to support the journal itself, the best route is commissioning a piece or licensing a photograph.',
+  },
+];
+---
+
+<BaseLayout
+  title="FAQ"
+  description="Common questions about LeaveNothing: what it is, how photographs may be used, editorial policy, and how the site is built."
+>
+  <header class="page-head">
+    <div class="shell page-head-inner">
+      <div>
+        <p class="eyebrow">Questions</p>
+        <h1>Before you ask.</h1>
+      </div>
+      <p class="page-deck">
+        The short answers to the things people email about most. If yours is not here, the
+        contact page is open.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="shell">
+      <div class="faq-list">
+        {
+          faqs.map((faq, index) => (
+            <details class="faq-item" data-reveal>
+              <summary>
+                <span class="faq-index">{String(index + 1).padStart(2, '0')}</span>
+                <span class="faq-question">{faq.question}</span>
+                <span class="faq-icon" aria-hidden="true" />
+              </summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell split">
+      <div class="split-body" data-reveal>
+        <p class="eyebrow">Still stuck</p>
+        <h2>Ask directly.</h2>
+        <p>
+          If your question is about a specific essay, include the title. If it is about a
+          place, include the region — not the exact coordinates.
+        </p>
+        <a class="btn btn--ghost" href={`mailto:${SITE.email}`}>Email {SITE.email}</a>
+      </div>
+      <div class="split-body" data-reveal>
+        <p class="eyebrow">Corrections</p>
+        <h2>Wrong facts get fixed.</h2>
+        <p>
+          Send the essay, the claim, and a source. Corrections are made in the text and noted
+          at the bottom of the essay with the date they were made.
+        </p>
+        <a class="link-arrow" href={url('/contact/')}>Send a correction</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

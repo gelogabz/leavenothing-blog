@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gelogabz.github.io/leavenothing-blog/sitemap-index.xml

@@ -1,0 +1,118 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import JournalRow from '../../components/JournalRow.astro';
+import { formatDate } from '../../lib/format';
+import { photos } from '../../data/photos';
+import { url } from '../../lib/url';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const [lead, ...rest] = posts;
+---
+
+<BaseLayout
+  title="Journal"
+  description="Essays and field notes on Philippine forests, coasts, wildlife, and the people looking after them."
+>
+  <header class="page-head">
+    <div class="shell page-head-inner">
+      <div>
+        <p class="eyebrow">Field journal</p>
+        <h1>Notes from outside.</h1>
+      </div>
+      <p class="page-deck">
+        Long-form essays about the places, species, and people of the Philippines — written
+        slowly, photographed carefully.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="shell">
+      {
+        lead ? (
+          <article class="feature" data-reveal>
+            <a class="feature-media" href={url(`/blog/${lead.id}/`)} aria-hidden="true" tabindex="-1">
+              <Image
+                src={lead.data.heroImage}
+                alt={lead.data.heroAlt}
+                widths={[640, 960, 1280, 1600]}
+                sizes="(max-width: 980px) 100vw, 60vw"
+                format="webp"
+                quality={84}
+              />
+            </a>
+            <div class="feature-body">
+              <p class="eyebrow">Most recent</p>
+              <h2><a href={url(`/blog/${lead.id}/`)}>{lead.data.title}</a></h2>
+              <p class="summary">{lead.data.description}</p>
+              <div class="feature-meta">
+                <time datetime={lead.data.pubDate.toISOString()}>{formatDate(lead.data.pubDate)}</time>
+                <span>Essay</span>
+              </div>
+              <a class="link-arrow" href={url(`/blog/${lead.id}/`)} style="margin-top:1.5rem;">
+                Read the essay
+              </a>
+            </div>
+          </article>
+        ) : (
+          <p class="muted">The first essay is still being written.</p>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    rest.length > 0 && (
+      <section class="section" aria-labelledby="archive-title">
+        <div class="shell">
+          <div class="section-head" data-reveal>
+            <div>
+              <p class="eyebrow">Archive</p>
+              <h2 id="archive-title">Everything else</h2>
+            </div>
+            <a class="link-arrow section-link" href={url('/rss.xml')}>
+              RSS
+            </a>
+          </div>
+
+          <div class="journal-list">
+            {rest.map((post) => (
+              <JournalRow post={post} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <div class="shell split">
+      <div class="split-body" data-reveal>
+        <p class="eyebrow">Browse by subject</p>
+        <h2>Forests, coasts, climate, people.</h2>
+        <p>
+          The journal is organised by the systems it tries to describe, not by chronology.
+          Start with whichever thread you already care about.
+        </p>
+        <a class="btn btn--ghost" href={url('/topics/')}>All topics</a>
+      </div>
+      <div class="split-media" data-reveal>
+        <Image
+          src={photos[0].src}
+          alt={photos[0].alt}
+          widths={[480, 720, 960]}
+          sizes="(max-width: 980px) 100vw, 45vw"
+          format="webp"
+          quality={82}
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

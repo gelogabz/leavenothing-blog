@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/url';
+
+const groups = [
+  {
+    kind: 'Government',
+    items: [
+      {
+        title: 'DENR — Department of Environment and Natural Resources',
+        href: 'https://denr.gov.ph/',
+        body: 'Primary source for Philippine forest cover, protected areas, wildlife regulations, and environmental clearance rules.',
+      },
+      {
+        title: 'PHIVOLCS',
+        href: 'https://www.phivolcs.dost.gov.ph/',
+        body: 'Volcano and earthquake bulletins. Essential before any hike near Mayon, Taal, Kanlaon, or Pinatubo.',
+      },
+      {
+        title: 'PAGASA',
+        href: 'https://www.pagasa.dost.gov.ph/',
+        body: 'Weather and typhoon forecasts. The single most useful tab on a Philippine trip.',
+      },
+      {
+        title: 'BFAR — Bureau of Fisheries and Aquatic Resources',
+        href: 'https://www.bfar.da.gov.ph/',
+        body: 'Fisheries statistics, closed seasons, and marine protected area information.',
+      },
+    ],
+  },
+  {
+    kind: 'Data and monitoring',
+    items: [
+      {
+        title: 'Global Forest Watch',
+        href: 'https://www.globalforestwatch.org/',
+        body: 'Near-real-time forest loss alerts and historical tree cover data. Good for seeing trends, not for ground truth.',
+      },
+      {
+        title: 'Protected Planet',
+        href: 'https://www.protectedplanet.net/',
+        body: 'The World Database on Protected Areas. Useful for checking whether a place is formally protected and under what category.',
+      },
+      {
+        title: 'IUCN Red List',
+        href: 'https://www.iucnredlist.org/',
+        body: 'Conservation status and range maps for threatened species, including Philippine endemics.',
+      },
+      {
+        title: 'iNaturalist',
+        href: 'https://www.inaturalist.org/',
+        body: 'Citizen-science observations. The fastest way to put a name to a plant or insect you photographed.',
+      },
+    ],
+  },
+  {
+    kind: 'Organisations',
+    items: [
+      {
+        title: 'Forest Foundation Philippines',
+        href: 'https://www.forestfoundation.ph/',
+        body: 'Grants and programmes for community-based forest management and watershed protection.',
+      },
+      {
+        title: 'Save Philippine Seas',
+        href: 'https://www.savephilippineseas.org/',
+        body: 'Marine conservation campaigns, coastal cleanups, and accessible educational material.',
+      },
+      {
+        title: 'Oceana Philippines',
+        href: 'https://ph.oceana.org/',
+        body: 'Fisheries policy, marine habitat protection, and campaign work on plastic and destructive fishing.',
+      },
+      {
+        title: 'Philippine Eagle Foundation',
+        href: 'https://www.philippineeaglefoundation.org/',
+        body: 'Conservation breeding, forest protection, and community livelihoods around the Philippine eagle.',
+      },
+    ],
+  },
+  {
+    kind: 'Practice',
+    items: [
+      {
+        title: 'Leave No Trace',
+        href: 'https://lnt.org/',
+        body: 'The seven principles, explained properly. The outdoor ethic this site is named after.',
+      },
+      {
+        title: 'UNESCO — Rice Terraces of the Philippine Cordilleras',
+        href: 'https://whc.unesco.org/en/list/722/',
+        body: 'Official documentation of the Ifugao terraces as a living cultural landscape.',
+      },
+      {
+        title: 'FAO — Globally Important Agricultural Heritage Systems',
+        href: 'https://www.fao.org/giahs/en/',
+        body: 'How working landscapes can be conservation systems, not just scenery.',
+      },
+      {
+        title: 'BirdLife International — Philippines',
+        href: 'https://www.birdlife.org/',
+        body: 'Important Bird and Biodiversity Areas, plus status updates on threatened Philippine birds.',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Resources"
+  description="A short, working list of Philippine environment sources: government agencies, data platforms, conservation organisations, and field practice."
+>
+  <header class="page-head">
+    <div class="shell page-head-inner">
+      <div>
+        <p class="eyebrow">Sources</p>
+        <h1>A working list.</h1>
+      </div>
+      <p class="page-deck">
+        The sources I actually use when writing about Philippine nature. Not exhaustive, not
+        sponsored, and updated when something better turns up.
+      </p>
+    </div>
+  </header>
+
+  {
+    groups.map((group) => (
+      <section class="section" aria-labelledby={`group-${group.kind.toLowerCase().replace(/\s+/g, '-')}`}>
+        <div class="shell">
+          <div class="section-head" data-reveal>
+            <div>
+              <p class="eyebrow">{group.kind}</p>
+              <h2 id={`group-${group.kind.toLowerCase().replace(/\s+/g, '-')}`}>
+                {group.kind}
+              </h2>
+            </div>
+          </div>
+
+          <div class="resource-list">
+            {group.items.map((item) => (
+              <div class="resource-item" data-reveal>
+                <span class="resource-kind">External link</span>
+                <h3><a href={item.href} target="_blank" rel="noopener noreferrer">{item.title}</a></h3>
+                <p>{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="section">
+    <div class="shell split">
+      <div class="split-body" data-reveal>
+        <p class="eyebrow">A caveat</p>
+        <h2>Check the date before you cite it.</h2>
+        <p>
+          Environmental data ages quickly. Forest loss figures, protected area boundaries, and
+          species status change. Where an essay makes a factual claim, the source and year are
+          in the text.
+        </p>
+        <p>
+          If something here is out of date or wrong, <a href={url('/contact/')}>tell me</a>. Corrections
+          are noted at the bottom of the affected essay.
+        </p>
+      </div>
+      <div class="split-body" data-reveal>
+        <p class="eyebrow">Missing something?</p>
+        <h2>Suggest a source.</h2>
+        <p>
+          Community groups, local monitoring projects, and academic labs are under-represented
+          on the open web. If you know one worth listing, send it over.
+        </p>
+        <a class="btn btn--ghost" href={url('/contact/')}>Send a suggestion</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

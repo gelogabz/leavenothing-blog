@@ -1,0 +1,37 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Runs on every push to main and can be triggered manually.
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow the job to clone the repo and publish a Pages deployment.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v7
+      - name: Install, build, and upload your site
+        uses: withastro/action@v6
+        # with:
+        #   path: . # Root of the Astro project inside the repo (optional).
+        #   node-version: 24 # Defaults to 24 (optional).
+        #   package-manager: npm@latest # Detected from the lockfile (optional).
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
