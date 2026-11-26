@@ -789,6 +789,10 @@ a.tag:hover {
   padding-right: 0.55rem;
 }
 
+.feature-cta {
+  margin-top: 1.5rem;
+}
+
 /* ---------- Post grid / cards ---------- */
 
 .post-grid {
@@ -1898,6 +1902,7 @@ a.tag:hover {
 }
 
 .principle-list {
+  margin-top: 1.5rem;
   display: grid;
   gap: 0;
   border-top: 1px solid var(--line);
@@ -1998,6 +2003,10 @@ a.tag:hover {
   font-size: var(--step-2);
 }
 
+.contact-aside h2:not(:first-child) {
+  margin-top: 2.5rem;
+}
+
 .contact-aside p {
   margin-top: 0.8rem;
   color: var(--text-2);
@@ -2019,6 +2028,10 @@ a.tag:hover {
 .field {
   display: grid;
   gap: 0.35rem;
+}
+
+.contact-form fieldset .field + .field {
+  margin-top: 1rem;
 }
 
 .field label {

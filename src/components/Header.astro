@@ -96,7 +96,12 @@ const isActive = (href: string) => {
   themeToggle?.addEventListener('click', () => {
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
     root.dataset.theme = next;
-    localStorage.setItem('theme', next);
+    // The theme still applies for this page if storage is blocked.
+    try {
+      localStorage.setItem('theme', next);
+    } catch {
+      /* persisting the choice is best-effort */
+    }
     setThemeLabel();
   });
 

@@ -22,10 +22,12 @@ Do not reintroduce Bootstrap, jQuery, Materialize, client-side auth, or localSto
 src/pages/            routes (file-based)
 src/layouts/          BaseLayout.astro (head, header, footer, reveal observer)
 src/components/       Header, Footer, Newsletter, SEO, PostCard, JournalRow, PhotoGallery
-src/content/blog/     one Markdown file per essay
-src/content.config.ts blog schema
+src/content/journal/     one Markdown file per essay
+src/content.config.ts journal schema
 src/data/photos.ts    photo metadata (alt, caption, topic, featured)
 src/lib/format.ts     dates, reading time, tag slugs/labels
+src/lib/posts.ts      published-post queries (single source for drafts + ordering)
+src/lib/topics.ts     topic grouping for home and topics index
 src/styles/global.css design tokens + all styles
 src/assets/photography/ 35 source JPGs
 ```
@@ -64,7 +66,7 @@ root-relative link. Import the helper:
 ```astro
 import { url } from '../lib/url';
 
-<a href={url('/blog/')}>Journal</a>
+<a href={url('/journal/')}>Journal</a>
 ```
 
 `url()` prefixes `import.meta.env.BASE_URL`. `astro:assets` already handles image URLs. If the
@@ -72,7 +74,7 @@ site moves to a custom domain, remove `base` from `astro.config.mjs`; `url()` ke
 because the base becomes `''`.
 
 ## Content conventions
-- One essay per Markdown file in `src/content/blog/`; filename = URL slug.
+- One essay per Markdown file in `src/content/journal/`; filename = URL slug.
 - Frontmatter is validated in `src/content.config.ts`. Required: `title`, `description`,
   `pubDate`, `heroImage`, `heroAlt`, `tags`.
 - Use `draft: true` to exclude a post everywhere (build, RSS, sitemap).

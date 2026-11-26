@@ -1,24 +1,31 @@
 import { TOPIC_META } from '../consts';
 
+const WORDS_PER_MINUTE = 220;
+
+const shortDate = new Intl.DateTimeFormat('en-PH', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
+
+const longDate = new Intl.DateTimeFormat('en-PH', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
 export function formatDate(date: Date): string {
-  return new Intl.DateTimeFormat('en-PH', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  }).format(date);
+  return shortDate.format(date);
 }
 
 export function formatLongDate(date: Date): string {
-  return new Intl.DateTimeFormat('en-PH', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  }).format(date);
+  return longDate.format(date);
 }
 
+/** Reading time in whole minutes, never less than one. */
 export function readingTime(body: string | undefined): number {
   const words = body?.trim().split(/\s+/).filter(Boolean).length ?? 0;
-  return Math.max(1, Math.round(words / 220));
+  return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
 }
 
 export function tagSlug(tag: string): string {

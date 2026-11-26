@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../lib/format';
+import { url } from '../lib/url';
+
+interface Props {
+  post: CollectionEntry<'journal'>;
+  eyebrow: string;
+  meta: string;
+  cta: string;
+}
+
+const { post, eyebrow, meta, cta } = Astro.props;
+const { title, description, pubDate, heroImage, heroAlt } = post.data;
+const href = url(`/journal/${post.id}/`);
+---
+
+<article class="feature" data-reveal>
+  <a class="feature-media" href={href} aria-hidden="true" tabindex="-1">
+    <Image
+      src={heroImage}
+      alt={heroAlt}
+      widths={[640, 960, 1280, 1600]}
+      sizes="(max-width: 980px) 100vw, 60vw"
+      format="webp"
+      quality={84}
+    />
+  </a>
+
+  <div class="feature-body">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2><a href={href}>{title}</a></h2>
+    <p class="summary">{description}</p>
+    <div class="feature-meta">
+      <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+      <span>{meta}</span>
+    </div>
+    <a class="link-arrow feature-cta" href={href}>{cta}</a>
+  </div>
+</article>

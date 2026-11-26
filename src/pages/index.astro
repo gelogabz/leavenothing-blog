@@ -1,34 +1,24 @@
 ---
-import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
+import FeaturedEssay from '../components/FeaturedEssay.astro';
 import { SITE, TOPIC_META } from '../consts';
-import { formatDate, tagSlug } from '../lib/format';
+import { tagSlug } from '../lib/format';
+import { getPublishedPosts } from '../lib/posts';
+import { groupPostsByTopic } from '../lib/topics';
 import { featuredPhotos, photos } from '../data/photos';
 
 import heroImage from '../assets/photography/01-sea-of-clouds.jpg';
 import aboutImage from '../assets/photography/34-branches-at-dusk.jpg';
 import { url } from '../lib/url';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-
+const posts = await getPublishedPosts();
 const featured = posts[0];
 const latest = posts.slice(1, 4);
-
-const topicCounts = Object.entries(TOPIC_META)
-  .map(([key, meta]) => ({
-    key,
-    ...meta,
-    count: posts.filter((post) => post.data.tags.includes(key)).length,
-  }))
-  .filter((topic) => topic.count > 0)
-  .sort((a, b) => b.count - a.count);
-
-const strip = featuredPhotos.slice(0, 6);
+const topics = groupPostsByTopic(posts);
+const highlightPhotos = featuredPhotos.slice(0, 6);
 ---
 
 <BaseLayout>
@@ -55,7 +45,7 @@ const strip = featuredPhotos.slice(0, 6);
       </p>
 
       <div class="hero-actions">
-        <a class="btn btn--solid-light" href={url('/blog/')}>Read the journal</a>
+        <a class="btn btn--solid-light" href={url('/journal/')}>Read the journal</a>
         <a class="btn btn--light" href={url('/photography/')}>See the photography</a>
       </div>
 
@@ -93,7 +83,7 @@ const strip = featuredPhotos.slice(0, 6);
             <span>Photographs</span>
           </li>
           <li>
-            <strong>{String(topicCounts.length).padStart(2, '0')}</strong>
+            <strong>{String(topics.length).padStart(2, '0')}</strong>
             <span>Subjects</span>
           </li>
         </ul>
@@ -110,36 +100,15 @@ const strip = featuredPhotos.slice(0, 6);
               <p class="eyebrow">Latest from the journal</p>
               <h2 id="featured-title">Start here</h2>
             </div>
-            <a class="link-arrow section-link" href={url('/blog/')}>All essays</a>
+            <a class="link-arrow section-link" href={url('/journal/')}>All essays</a>
           </div>
 
-          <article class="feature" data-reveal>
-            <a class="feature-media" href={url(`/blog/${featured.id}/`)} aria-hidden="true" tabindex="-1">
-              <Image
-                src={featured.data.heroImage}
-                alt={featured.data.heroAlt}
-                widths={[640, 960, 1280, 1600]}
-                sizes="(max-width: 980px) 100vw, 60vw"
-                format="webp"
-                quality={84}
-              />
-            </a>
-
-            <div class="feature-body">
-              <p class="eyebrow">{TOPIC_META[featured.data.tags[0]]?.label ?? 'Field note'}</p>
-              <h2><a href={url(`/blog/${featured.id}/`)}>{featured.data.title}</a></h2>
-              <p class="summary">{featured.data.description}</p>
-              <div class="feature-meta">
-                <time datetime={featured.data.pubDate.toISOString()}>
-                  {formatDate(featured.data.pubDate)}
-                </time>
-                <span>Read the essay</span>
-              </div>
-              <a class="link-arrow" href={url(`/blog/${featured.id}/`)} style="margin-top:1.5rem;">
-                Open essay
-              </a>
-            </div>
-          </article>
+          <FeaturedEssay
+            post={featured}
+            eyebrow={TOPIC_META[featured.data.tags[0]]?.label ?? 'Field note'}
+            meta="Read the essay"
+            cta="Open essay"
+          />
         </div>
       </section>
     )
@@ -179,7 +148,7 @@ const strip = featuredPhotos.slice(0, 6);
 
       <div class="photo-strip">
         {
-          strip.map((photo) => (
+          highlightPhotos.map((photo) => (
             <a
               class="photo-tile"
               href={url('/photography/')}
@@ -213,18 +182,21 @@ const strip = featuredPhotos.slice(0, 6);
 
       <ul class="topic-list">
         {
-          topicCounts.map((topic, index) => (
-            <li>
-              <a class="topic-row" href={url(`/tags/${tagSlug(topic.key)}/`)} data-reveal>
-                <span class="topic-index">{String(index + 1).padStart(2, '0')}</span>
-                <h3>{topic.label}</h3>
-                <p>{topic.blurb}</p>
-                <span class="topic-count">
-                  {topic.count} {topic.count === 1 ? 'essay' : 'essays'}
-                </span>
-              </a>
-            </li>
-          ))
+          topics.map((topic, index) => {
+            const count = topic.posts.length;
+            return (
+              <li>
+                <a class="topic-row" href={url(`/tags/${tagSlug(topic.key)}/`)} data-reveal>
+                  <span class="topic-index">{String(index + 1).padStart(2, '0')}</span>
+                  <h3>{topic.label}</h3>
+                  <p>{topic.blurb}</p>
+                  <span class="topic-count">
+                    {count} {count === 1 ? 'essay' : 'essays'}
+                  </span>
+                </a>
+              </li>
+            );
+          })
         }
       </ul>
     </div>

@@ -49,11 +49,13 @@ astro dev stop
 src/
   assets/photography/     full-size source photographs (35)
   components/             Header, Footer, Newsletter, SEO, PostCard, JournalRow, PhotoGallery
-  content/blog/           Markdown essays (one file per post)
-  content.config.ts       blog collection schema
+  content/journal/           Markdown essays (one file per post)
+  content.config.ts       journal collection schema
   data/photos.ts          photo metadata: alt text, caption, topic
   layouts/BaseLayout.astro
   lib/format.ts           date, reading time, tag helpers
+  lib/posts.ts            published-post queries and ordering
+  lib/topics.ts           topic grouping for indexes
   lib/url.ts              base-aware internal link helper
   pages/                  routes
   styles/global.css       design tokens + all component styles
@@ -63,7 +65,7 @@ public/                   favicon, OG image
 
 ## Writing a post
 
-Add `src/content/blog/<slug>.md`. The filename becomes the URL: `/blog/<slug>/`.
+Add `src/content/journal/<slug>.md`. The filename becomes the URL: `/journal/<slug>/`.
 
 ```yaml
 ---
@@ -130,7 +132,7 @@ helper instead of hard-coding paths:
 ```ts
 import { url } from '../lib/url';
 
-url('/blog/'); // "/leavenothing-blog/blog/"
+url('/journal/'); // "/leavenothing-blog/journal/"
 ```
 
 `astro:assets` already prefixes generated image URLs. If you add a hard-coded `href="/..."` or

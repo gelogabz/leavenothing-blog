@@ -13,8 +13,8 @@ Current state of the rebuilt Astro site. Replaces the 2022 static HTML/Bootstrap
 | Photo strip (6 featured images) | Done | `src/pages/index.astro` |
 | Subject index with counts | Done | `src/pages/index.astro`, `/topics/` |
 | About teaser + author section | Done | `src/pages/index.astro`, `/about/` |
-| Journal archive | Done | `src/pages/blog/index.astro` |
-| Essay template: hero, TOC, prose, gallery, tags, prev/next, related | Done | `src/pages/blog/[slug].astro` |
+| Journal archive | Done | `src/pages/journal/index.astro` |
+| Essay template: hero, TOC, prose, gallery, tags, prev/next, related | Done | `src/pages/journal/[slug].astro` |
 | Tag pages (one per used tag) | Done | `src/pages/tags/[tag].astro` |
 | Photography archive with filters | Done | `src/pages/photography.astro`, `src/components/PhotoGallery.astro` |
 | Photo lightbox | Done | Native `<dialog>` in `PhotoGallery.astro` |
@@ -30,10 +30,10 @@ Current state of the rebuilt Astro site. Replaces the 2022 static HTML/Bootstrap
 
 ## Content
 
-- 6 seed essays, original copy, each with a 3-image gallery.
+- 7 essays, original copy; six carry a 3-image gallery, the architecture essay carries one.
 - 35 photographs with alt text, captions, and topic classification.
-- Topic metadata for 7 subjects: forests, coasts, wildlife, climate, people, photography,
-  philippines.
+- Topic metadata for 8 subjects: forests, coasts, wildlife, climate, people, photography,
+  philippines, architecture.
 - Resources: 16 external links across government, data, organisations, and practice.
 
 ## Removed from the legacy site

@@ -5,7 +5,7 @@ import { formatDate, tagLabel, tagSlug } from '../lib/format';
 import { url } from '../lib/url';
 
 interface Props {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<'journal'>;
 }
 
 const { post } = Astro.props;
@@ -13,7 +13,7 @@ const { title, description, pubDate, heroImage, heroAlt, tags } = post.data;
 ---
 
 <article class="post-card" data-reveal>
-  <a class="post-card-media" href={url(`/blog/${post.id}/`)} tabindex="-1" aria-hidden="true">
+  <a class="post-card-media" href={url(`/journal/${post.id}/`)} tabindex="-1" aria-hidden="true">
     <Image
       src={heroImage}
       alt={heroAlt}
@@ -30,7 +30,7 @@ const { title, description, pubDate, heroImage, heroAlt, tags } = post.data;
     {tags.slice(0, 1).map((tag) => <span>{tagLabel(tag)}</span>)}
   </div>
 
-  <h3><a href={url(`/blog/${post.id}/`)}>{title}</a></h3>
+  <h3><a href={url(`/journal/${post.id}/`)}>{title}</a></h3>
   <p>{description}</p>
 
   <ul class="tag-row" aria-label="Topics">

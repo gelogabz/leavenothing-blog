@@ -1,24 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
-
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import JournalRow from '../../components/JournalRow.astro';
-import { TOPIC_META } from '../../consts';
 import { tagSlug } from '../../lib/format';
+import { getPublishedPosts } from '../../lib/posts';
+import { groupPostsByTopic } from '../../lib/topics';
 import { url } from '../../lib/url';
 
-const posts = await getCollection('blog', ({ data }) => !data.draft);
-
-const topics = Object.entries(TOPIC_META)
-  .map(([key, meta]) => ({
-    key,
-    ...meta,
-    posts: posts
-      .filter((post) => post.data.tags.includes(key))
-      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
-  }))
-  .filter((topic) => topic.posts.length > 0)
-  .sort((a, b) => b.posts.length - a.posts.length);
+const posts = await getPublishedPosts();
+const topics = groupPostsByTopic(posts);
 ---
 
 <BaseLayout
@@ -66,16 +55,12 @@ const topics = Object.entries(TOPIC_META)
           <p class="eyebrow">Latest in every thread</p>
           <h2>Start anywhere</h2>
         </div>
-        <a class="link-arrow section-link" href={url('/blog/')}>Full archive</a>
+        <a class="link-arrow section-link" href={url('/journal/')}>Full archive</a>
       </div>
 
       <div class="journal-list">
         {
-          posts
-            .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-            .map((post) => (
-              <JournalRow post={post} />
-            ))
+          posts.map((post) => <JournalRow post={post} />)
         }
       </div>
     </div>

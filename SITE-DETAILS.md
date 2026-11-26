@@ -11,8 +11,8 @@ Internal links are generated with `url()` from `src/lib/url.ts`.
 | Route | File | Notes |
 |---|---|---|
 | `/` | `src/pages/index.astro` | Hero, intro, featured post, recent posts, photo strip, topics, about teaser |
-| `/blog/` | `src/pages/blog/index.astro` | Lead essay + archive list + subject split |
-| `/blog/[slug]/` | `src/pages/blog/[slug].astro` | Essay: hero image, TOC, prose, gallery, tags, prev/next, related |
+| `/journal/` | `src/pages/journal/index.astro` | Lead essay + archive list + subject split |
+| `/journal/[slug]/` | `src/pages/journal/[slug].astro` | Essay: hero image, TOC, prose, gallery, tags, prev/next, related |
 | `/tags/[tag]/` | `src/pages/tags/[tag].astro` | One page per tag used by a published post |
 | `/topics/` | `src/pages/topics/index.astro` | Topic index with counts + latest essays |
 | `/photography/` | `src/pages/photography.astro` | Filterable 35-photo archive with lightbox |
@@ -26,10 +26,11 @@ Internal links are generated with `url()` from `src/lib/url.ts`.
 
 ## Content inventory
 
-Six seed essays, all illustrated with the author's photographs:
+Seven essays, all illustrated with the author's photographs:
 
 | Post | Date | Tags | Hero |
 |---|---|---|---|
+| `the-geometry-of-shelter` | 2026-11-26 | architecture, philippines, people, climate | 13-nmnh-tree-of-life |
 | `what-the-fog-hides` | 2026-11-24 | forests, philippines, climate | 05-pines-in-fog |
 | `a-mountain-is-not-a-backdrop` | 2026-11-18 | photography, people, philippines | 30-mayon-clear |
 | `the-shoreline-remembers` | 2026-11-10 | coasts, climate, people | 23-low-tide |
@@ -37,7 +38,7 @@ Six seed essays, all illustrated with the author's photographs:
 | `small-flowers-whole-systems` | 2026-10-14 | wildlife, philippines, photography | 27-rain-lilies |
 | `leave-nothing-but-attention` | 2026-09-30 | photography, people, climate | 34-branches-at-dusk |
 
-Each post carries a three-image gallery from the same photo library. All copy is original
+Most posts carry a three-image gallery from the same photo library; `the-geometry-of-shelter` uses the two architectural photographs. All copy is original
 prototype content; no legacy text was carried over verbatim except the name and general mission.
 
 ## Photography
@@ -45,7 +46,7 @@ prototype content; no legacy text was carried over verbatim except the name and 
 35 photographs, sourced from `~/web-projects/gelobaring-intro/assets/photography`. Subjects:
 mountain ridges and cloud inversions, pine forest, rice terraces, crater and volcanic lakes,
 Mayon, tidal flats, beaches, rain lilies and water lilies, hikers, and a few built scenes
-(Sorsogon Capitol, a glass canopy).
+(the Tree of Life dome at the National Museum of Natural History, the Sorsogon Sports Arena).
 
 Alt text and captions are stored in `src/data/photos.ts`. Gallery topics: mountains, forest,
 coast, water, plants, people, built, sky.

@@ -1,27 +1,27 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import { Image } from 'astro:assets';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import { formatLongDate, readingTime, tagLabel, tagSlug } from '../../lib/format';
+import { getPublishedPosts } from '../../lib/posts';
 import { url } from '../../lib/url';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const posts = await getPublishedPosts();
   return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
 }
 
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+// Oldest first: the neighbours read as before/after in publication order.
+const posts = await getPublishedPosts({ order: 'oldest-first' });
 
-const index = posts.findIndex((item) => item.id === post.id);
-const previous = index > 0 ? posts[index - 1] : undefined;
-const next = index < posts.length - 1 ? posts[index + 1] : undefined;
+const position = posts.findIndex((item) => item.id === post.id);
+const previous = position > 0 ? posts[position - 1] : undefined;
+const next = position < posts.length - 1 ? posts[position + 1] : undefined;
 
 const related = posts
   .filter(
@@ -50,7 +50,7 @@ const heroUrl = new URL(post.data.heroImage.src, Astro.site ?? Astro.url).href;
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href={url('/')}>Home</a>
           <span aria-hidden="true">/</span>
-          <a href={url('/blog/')}>Journal</a>
+          <a href={url('/journal/')}>Journal</a>
           <span aria-hidden="true">/</span>
           <span aria-current="page">{tagLabel(post.data.tags[0] ?? 'Field note')}</span>
         </nav>
@@ -146,12 +146,12 @@ const heroUrl = new URL(post.data.heroImage.src, Astro.site ?? Astro.url).href;
         <nav class="post-nav" aria-label="More essays">
           {
             previous ? (
-              <a href={url(`/blog/${previous.id}/`)}>
+              <a href={url(`/journal/${previous.id}/`)}>
                 <span>Previous</span>
                 <strong>{previous.data.title}</strong>
               </a>
             ) : (
-              <a href={url('/blog/')}>
+              <a href={url('/journal/')}>
                 <span>Back to</span>
                 <strong>All essays</strong>
               </a>
@@ -159,7 +159,7 @@ const heroUrl = new URL(post.data.heroImage.src, Astro.site ?? Astro.url).href;
           }
           {
             next ? (
-              <a class="next" href={url(`/blog/${next.id}/`)}>
+              <a class="next" href={url(`/journal/${next.id}/`)}>
                 <span>Next</span>
                 <strong>{next.data.title}</strong>
               </a>
@@ -184,7 +184,7 @@ const heroUrl = new URL(post.data.heroImage.src, Astro.site ?? Astro.url).href;
               <p class="eyebrow">Keep reading</p>
               <h2 id="related-title">Related notes</h2>
             </div>
-            <a class="link-arrow section-link" href={url('/blog/')}>
+            <a class="link-arrow section-link" href={url('/journal/')}>
               All essays
             </a>
           </div>

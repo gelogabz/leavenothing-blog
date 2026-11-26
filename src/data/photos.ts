@@ -106,9 +106,9 @@ const meta: PhotoMeta[] = [
     topic: 'people',
   },
   {
-    file: '13-geometry.jpg',
-    alt: 'A geometric glass and steel canopy viewed from below against a blue sky.',
-    caption: 'A different kind of canopy.',
+    file: '13-nmnh-tree-of-life.jpg',
+    alt: 'Steel branches and glass panels of a geometric dome seen from below, with pale blue sky showing through the gaps.',
+    caption: 'The Tree of Life, National Museum of Natural History, Manila.',
     topic: 'built',
   },
   {
@@ -199,9 +199,9 @@ const meta: PhotoMeta[] = [
     featured: true,
   },
   {
-    file: '28-sorsogon-capitol.jpg',
-    alt: 'The Sorsogon Provincial Capitol building stands against a dramatic clouded sky.',
-    caption: 'Sorsogon Provincial Capitol under weather.',
+    file: '28-sorsogon-arena.jpg',
+    alt: 'The curved white facade of the Sorsogon Sports Arena, its arches stacked in tiers beneath a heavy grey sky.',
+    caption: 'Sorsogon Sports Arena, Balogo, Sorsogon City.',
     topic: 'built',
   },
   {
@@ -262,3 +262,12 @@ export const photos: Photo[] = meta.map((item) => {
 });
 
 export const featuredPhotos = photos.filter((photo) => photo.featured);
+
+/** Look up a photograph by filename. Throws at build time if the file is not catalogued. */
+export function getPhoto(file: string): Photo {
+  const photo = photos.find((item) => item.file === file);
+  if (!photo) {
+    throw new Error(`Unknown photograph: ${file}`);
+  }
+  return photo;
+}

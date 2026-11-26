@@ -1,6 +1,5 @@
 export const SITE = {
   name: "LeaveNothing",
-  domain: "leavenothing.org",
   title: "LeaveNothing — Field notes on Philippine nature",
   description:
     "A personal journal about the forests, coasts, wildlife, and people of the Philippines — and the quiet work of keeping them.",
@@ -12,7 +11,7 @@ export const SITE = {
 } as const;
 
 export const NAV = [
-  { href: "/blog/", label: "Journal" },
+  { href: "/journal/", label: "Journal" },
   { href: "/photography/", label: "Photography" },
   { href: "/topics/", label: "Topics" },
   { href: "/resources/", label: "Resources" },
@@ -63,5 +62,10 @@ export const TOPIC_META: Record<string, { label: string; blurb: string }> = {
   philippines: {
     label: "Philippines",
     blurb: "Place, history, and the particular ecology of these 7,600 islands.",
+  },
+  architecture: {
+    label: "Architecture",
+    blurb:
+      "Buildings, public spaces, and the old tropical grammar of shade, air, and shelter.",
   },
 };

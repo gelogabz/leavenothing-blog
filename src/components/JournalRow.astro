@@ -5,14 +5,14 @@ import { formatDate, readingTime, tagLabel } from '../lib/format';
 import { url } from '../lib/url';
 
 interface Props {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<'journal'>;
 }
 
 const { post } = Astro.props;
 const { title, description, pubDate, heroImage, tags } = post.data;
 ---
 
-<a class="journal-row" href={url(`/blog/${post.id}/`)} data-reveal>
+<a class="journal-row" href={url(`/journal/${post.id}/`)} data-reveal>
   <span class="journal-thumb" aria-hidden="true">
     <Image
       src={heroImage}

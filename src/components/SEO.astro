@@ -29,6 +29,7 @@ const canonical = new URL(Astro.url.pathname, site);
 const ogImage = new URL(url(image), site);
 const homeUrl = new URL(url('/'), site).href;
 const fullTitle = title === SITE.title ? title : `${title} — ${SITE.name}`;
+const author = { '@type': 'Person', name: SITE.author };
 
 const jsonLd =
   type === 'article'
@@ -40,10 +41,7 @@ const jsonLd =
         image: ogImage.href,
         datePublished: publishedTime?.toISOString(),
         dateModified: (updatedTime ?? publishedTime)?.toISOString(),
-        author: {
-          '@type': 'Person',
-          name: SITE.author,
-        },
+        author,
         publisher: {
           '@type': 'Organization',
           name: SITE.name,
@@ -57,10 +55,7 @@ const jsonLd =
         name: SITE.name,
         url: homeUrl,
         description: SITE.description,
-        author: {
-          '@type': 'Person',
-          name: SITE.author,
-        },
+        author,
       };
 ---
 
