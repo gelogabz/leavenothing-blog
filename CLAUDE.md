@@ -29,7 +29,7 @@ src/lib/format.ts     dates, reading time, tag slugs/labels
 src/lib/posts.ts      published-post queries (single source for drafts + ordering)
 src/lib/topics.ts     topic grouping for home and topics index
 src/styles/global.css design tokens + all styles
-src/assets/photography/ 35 source JPGs
+src/assets/photography/ 44 source JPGs
 ```
 
 ## Design system (overrides the workspace Suger system)

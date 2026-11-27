@@ -13,6 +13,7 @@ export const PHOTO_TOPICS = {
   plants: 'Plants',
   people: 'People',
   built: 'Built',
+  churches: 'Churches',
   sky: 'Sky',
 } as const;
 
@@ -248,6 +249,60 @@ const meta: PhotoMeta[] = [
     alt: 'A person walks along a wet beach at sunset, reflected in the shallow water.',
     caption: 'The last walk before dark.',
     topic: 'coast',
+  },
+  {
+    file: '36-basilica-santo-nino-cebu.jpg',
+    alt: 'The long white stone flank of the Basilica del Santo Niño in Cebu City, with dark louvered windows and a red-tiled bell tower at the far end.',
+    caption: 'Basilica del Santo Niño, Cebu City, founded 1565.',
+    topic: 'churches',
+  },
+  {
+    file: '37-st-philomene-alcala.jpg',
+    alt: 'A wide red brick church facade with a tall bell tower capped by a red dome, white statues in niches, and a Christ the King monument on a brick plinth in front.',
+    caption: 'St. Philomene Church, Alcala, Cagayan. Brick from river clay.',
+    topic: 'churches',
+  },
+  {
+    file: '38-san-agustin-belfry-siquijor.jpg',
+    alt: 'An old dark coral-stone bell tower with arched openings stands beside a modern concrete church under a clear sky, with festival bunting strung overhead.',
+    caption: 'The 1863 belfry beside the modern church, San Juan, Siquijor.',
+    topic: 'churches',
+  },
+  {
+    file: '39-sto-nino-siquijor.jpg',
+    alt: 'A small white church with black window trim, arched iron grilles, and a curving gable, with a white Sto. Niño sign at the gate.',
+    caption: 'Sto. Niño Church, Siquijor.',
+    topic: 'churches',
+  },
+  {
+    file: '40-daraga-church-mayon.jpg',
+    alt: 'The dark volcanic-stone facade and bell tower of Daraga Church on the left, with Mayon volcano rising under heavy cloud on the right.',
+    caption: 'Daraga Church and Mayon, Albay.',
+    topic: 'churches',
+  },
+  {
+    file: '41-barcelona-church-dusk.jpg',
+    alt: 'The weathered stone facade and bell tower of Barcelona Church at dusk, silhouetted against a deep blue sky.',
+    caption: 'St. Joseph Parish Church, Barcelona, Sorsogon, at dusk.',
+    topic: 'churches',
+  },
+  {
+    file: '42-st-anthony-gubat-night.jpg',
+    alt: 'A church facade and twin bell towers outlined in white lights at night, with a neon Christmas greeting above the door and tricycles parked in front.',
+    caption: 'St. Anthony of Padua Parish, Gubat, at Christmas.',
+    topic: 'churches',
+  },
+  {
+    file: '43-farmplate-chapel.jpg',
+    alt: 'A small white wooden chapel with a pointed steeple and Gothic windows, standing among coconut palms under a blue sky.',
+    caption: 'The Little Chapel, FarmPlate, Daraga, Albay.',
+    topic: 'churches',
+  },
+  {
+    file: '44-guinobatan-dome.jpg',
+    alt: 'Looking up at the weathered cream facade and dark red dome of a church, framed by the leaves of a tree.',
+    caption: 'Our Lady of the Assumption Parish, Guinobatan, Albay.',
+    topic: 'churches',
   },
 ];
 
