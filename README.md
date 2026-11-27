@@ -47,7 +47,7 @@ astro dev stop
 
 ```
 src/
-  assets/photography/     full-size source photographs (44)
+  assets/photography/     full-size source photographs (69)
   components/             Header, Footer, Newsletter, SEO, PostCard, JournalRow, PhotoGallery
   content/journal/           Markdown essays (one file per post)
   content.config.ts       journal collection schema

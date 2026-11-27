@@ -15,7 +15,7 @@ Internal links are generated with `url()` from `src/lib/url.ts`.
 | `/journal/[slug]/` | `src/pages/journal/[slug].astro` | Essay: hero image, TOC, prose, gallery, tags, prev/next, related |
 | `/tags/[tag]/` | `src/pages/tags/[tag].astro` | One page per tag used by a published post |
 | `/topics/` | `src/pages/topics/index.astro` | Topic index with counts + latest essays |
-| `/photography/` | `src/pages/photography.astro` | Filterable 44-photo archive with lightbox |
+| `/photography/` | `src/pages/photography.astro` | Filterable 69-photo archive with lightbox |
 | `/about/` | `src/pages/about.astro` | Author, purpose, working principles, collaboration |
 | `/resources/` | `src/pages/resources.astro` | Government, data, organisations, practice |
 | `/contact/` | `src/pages/contact.astro` | Email + form; without an endpoint, the form composes a readable mailto |
@@ -26,10 +26,12 @@ Internal links are generated with `url()` from `src/lib/url.ts`.
 
 ## Content inventory
 
-Eight essays, all illustrated with the author's photographs:
+Ten essays, all illustrated with the author's photographs:
 
 | Post | Date | Tags | Hero |
 |---|---|---|---|
+| `the-dogs-never-asked-permission` | 2026-11-28 | people, philippines, coasts | 46-dog-beach-walk-sunset |
+| `a-flower-is-a-tool` | 2026-11-27 | wildlife, philippines, photography | 64-morning-glory-catanduanes |
 | `the-walls-are-made-of-weather` | 2026-11-26 | architecture, philippines, people, climate | 40-daraga-church-mayon |
 | `the-geometry-of-shelter` | 2026-11-26 | architecture, philippines, people, climate | 13-nmnh-tree-of-life |
 | `what-the-fog-hides` | 2026-11-24 | forests, philippines, climate | 05-pines-in-fog |
@@ -39,18 +41,18 @@ Eight essays, all illustrated with the author's photographs:
 | `small-flowers-whole-systems` | 2026-10-14 | wildlife, philippines, photography | 27-rain-lilies |
 | `leave-nothing-but-attention` | 2026-09-30 | photography, people, climate | 34-branches-at-dusk |
 
-Most posts carry a three-image gallery from the same photo library. The two architecture essays differ: `the-geometry-of-shelter` uses one gallery image, `the-walls-are-made-of-weather` uses eight. All copy is original
+Six posts carry a three-image gallery from the same photo library. The others vary: `the-geometry-of-shelter` uses one gallery image, `the-dogs-never-asked-permission` seven, `the-walls-are-made-of-weather` eight, `a-flower-is-a-tool` nine. All copy is original
 prototype content; no legacy text was carried over verbatim except the name and general mission.
 
 ## Photography
 
-44 photographs from the author's own archive. Subjects:
+69 photographs from the author's own archive. Subjects:
 mountain ridges and cloud inversions, pine forest, rice terraces, crater and volcanic lakes,
 Mayon, tidal flats, beaches, rain lilies and water lilies, hikers, and a few built scenes
-(the Tree of Life dome at the National Museum of Natural History, the Sorsogon Sports Arena), and nine churches across Cebu, Cagayan, Siquijor, Albay, and Sorsogon.
+(the Tree of Life dome at the National Museum of Natural History, the Sorsogon Sports Arena), nine churches across Cebu, Cagayan, Siquijor, Albay, and Sorsogon, and a growing set of pets and flowers.
 
 Alt text and captions are stored in `src/data/photos.ts`. Gallery topics: mountains, forest,
-coast, water, plants, people, built, churches, sky.
+coast, water, plants, people, pets, flowers, built, churches, sky.
 
 ## Design system
 

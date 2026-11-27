@@ -31,12 +31,12 @@ Current state of the rebuilt Astro site. Replaces the 2022 static HTML/Bootstrap
 
 ## Content
 
-- 8 essays, original copy; six carry a 3-image gallery, the two architecture essays carry one and eight.
-- 44 photographs with alt text, captions, and topic classification.
+- 10 essays, original copy; six carry a 3-image gallery, the rest carry one, seven, eight, and nine.
+- 69 photographs with alt text, captions, and topic classification.
 - Topic metadata for 8 subjects: forests, coasts, wildlife, climate, people, photography,
   philippines, architecture.
-- Photography filters for 9 subjects: mountains, forest, coast, water, plants, people, built,
-  churches, sky.
+- Photography filters for 11 subjects: mountains, forest, coast, water, plants, people, pets,
+  flowers, built, churches, sky.
 - Resources: 16 external links across government, data, organisations, and practice.
 
 ## Removed from the legacy site
