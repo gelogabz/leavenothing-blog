@@ -37,14 +37,14 @@ src/assets/photography/ 44 source JPGs
 This project intentionally does **not** use the Suger navy/orange/Lexend palette. It is a nature
 journal: warm paper, forest ink, rust accent, serif display type.
 
-| Token | Light | Dark |
-|---|---|---|
-| `--bg` | `#f5f2e9` | `#0d1310` |
-| `--surface` | `#fbf9f3` | `#131b16` |
-| `--text` | `#161c18` | `#eef1e8` |
-| `--muted` | `#5a665d` | `#9aa79b` |
-| `--brand` | `#1e3a2c` | `#b7d3b8` |
-| `--accent` | `#9c4623` | `#e3a07c` |
+| Token         | Light     | Dark      |
+| ------------- | --------- | --------- |
+| `--bg`        | `#f5f2e9` | `#0d1310` |
+| `--surface`   | `#fbf9f3` | `#131b16` |
+| `--text`      | `#161c18` | `#eef1e8` |
+| `--muted`     | `#5a665d` | `#9aa79b` |
+| `--brand`     | `#1e3a2c` | `#b7d3b8` |
+| `--accent`    | `#9c4623` | `#e3a07c` |
 | `--footer-bg` | `#14251b` | `#080d0a` |
 
 Rules:
@@ -74,6 +74,7 @@ site moves to a custom domain, remove `base` from `astro.config.mjs`; `url()` ke
 because the base becomes `''`.
 
 ## Content conventions
+
 - One essay per Markdown file in `src/content/journal/`; filename = URL slug.
 - Frontmatter is validated in `src/content.config.ts`. Required: `title`, `description`,
   `pubDate`, `heroImage`, `heroAlt`, `tags`.
@@ -106,6 +107,14 @@ because the base becomes `''`.
 - All images have width/height or an aspect ratio to prevent layout shift.
 - Below-the-fold images lazy-load; the hero is eager with `fetchpriority="high"`.
 - Keep client JS small and inline. No new runtime dependencies without a clear reason.
+
+## Cross-links
+
+- The footer links out to the portfolio at `https://gelogabz.github.io/gelobaring-intro/`
+  (Off the Clock page). This is the one deliberate exception to the site's standalone rule:
+  a plain personal link, no Suger logo, masthead, or nav pattern.
+- Keep it in `src/components/Footer.astro`, in `.footer-bottom`. It opens in a new tab with
+  `rel="noopener noreferrer"` and a `sr-only` new-tab note.
 
 ## Placeholders
 

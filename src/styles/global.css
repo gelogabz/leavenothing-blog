@@ -1203,6 +1203,16 @@ a.tag:hover {
   margin: 0;
 }
 
+.footer-bottom a {
+  color: var(--footer-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--footer-line);
+}
+
+.footer-bottom a:hover {
+  color: var(--accent);
+}
+
 /* ---------- Page head ---------- */
 
 .page-head {
