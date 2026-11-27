@@ -19,7 +19,7 @@ gallery:
 
 Mayon has a shape that does most of the work for you. The cone is almost geometric. Put it behind a beach, a coconut palm, a laundry line, a dog — it still reads. This is why it shows up in so many photographs, including some of mine.
 
-But a mountain is not a backdrop. It is a volcano, a watershed, a hazard zone, a farm, a weather system, and a very large piece of geology that does not care whether the light is good.
+But a mountain is not a backdrop. It is a volcano, a watershed, a hazard zone, a farm, a weather system, and a large piece of geology that does not care whether the light is good.
 
 ## The photograph is the smallest part
 
@@ -49,7 +49,7 @@ There is a particular kind of outdoor content that turns every view into a perso
 
 But the mountain was doing something long before you arrived and will keep doing it after you leave. The photograph is a record of a brief meeting. It is not the point of the meeting.
 
-The point is to notice what is actually there: the volcanic soil, the orchids on the lava, the farmers who know which slope is safe this month, the birds that arrive after the rain. The point is to leave the place as capable of continuing as you found it.
+The point is to notice what is there: the volcanic soil, the orchids on the lava, the farmers who know which slope is safe this month, the birds that arrive after the rain. The point is to leave the place as capable of continuing as you found it.
 
 Mayon does not need us to make it beautiful. It needs us to stop treating it as scenery.
 

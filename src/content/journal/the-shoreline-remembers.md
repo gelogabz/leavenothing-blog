@@ -45,7 +45,7 @@ That is why the shoreline feels like a record. Every tide writes a new layer, an
 
 > The ocean does not distinguish between a bottle cap and a fish. It moves both.
 
-## What actually helps
+## What helps
 
 If you want to do more than fill a bag:
 

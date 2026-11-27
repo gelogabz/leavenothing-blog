@@ -64,7 +64,6 @@ const faqs = [
   <header class="page-head">
     <div class="shell page-head-inner">
       <div>
-        <p class="eyebrow">Questions</p>
         <h1>Before you ask.</h1>
       </div>
       <p class="page-deck">
@@ -79,7 +78,7 @@ const faqs = [
       <div class="faq-list">
         {
           faqs.map((faq, index) => (
-            <details class="faq-item" data-reveal>
+            <details class="faq-item">
               <summary>
                 <span class="faq-index">{String(index + 1).padStart(2, '0')}</span>
                 <span class="faq-question">{faq.question}</span>
@@ -95,8 +94,7 @@ const faqs = [
 
   <section class="section">
     <div class="shell split">
-      <div class="split-body" data-reveal>
-        <p class="eyebrow">Still stuck</p>
+      <div class="split-body">
         <h2>Ask directly.</h2>
         <p>
           If your question is about a specific essay, include the title. If it is about a
@@ -104,8 +102,7 @@ const faqs = [
         </p>
         <a class="btn btn--ghost" href={`mailto:${SITE.email}`}>Email {SITE.email}</a>
       </div>
-      <div class="split-body" data-reveal>
-        <p class="eyebrow">Corrections</p>
+      <div class="split-body">
         <h2>Wrong facts get fixed.</h2>
         <p>
           Send the essay, the claim, and a source. Corrections are made in the text and noted

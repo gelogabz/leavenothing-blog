@@ -16,11 +16,37 @@ the author's own photography. This file covers working conventions; product stat
 
 Do not reintroduce Bootstrap, jQuery, Materialize, client-side auth, or localStorage CRUD.
 
+## Automation
+
+Two primary agents and one skill support the editorial workflow. They are configuration, not
+code — do not inline their rules elsewhere.
+
+These live in the **global OpenCode config**, not in this repo. Nothing is committed, and
+the project has no `.opencode/` directory by design.
+
+| Artifact | Path | Purpose |
+|---|---|---|
+| `leavenothing-essay` skill | `~/.config/opencode/skills/leavenothing-essay/SKILL.md` | Voice, standards, fact discipline, output contract. Single source of truth for essay writing |
+| `journal-writer` agent | `~/.config/opencode/agents/journal-writer.md` | End-to-end post workflow: read photos, research, draft, catalogue, verify |
+| `site-maintainer` agent | `~/.config/opencode/agents/site-maintainer.md` | Site upkeep: components, styles, routes, build health, docs |
+
+Because they are global, both agents load in every project. Each opens with a scope check
+that stops if the working directory is not this site. Keep that guard if the prompts are
+ever edited.
+
+Both agents deny all `git` shell commands, and neither may edit `.github/workflows/`. The
+essay skill is loaded by the writer agent at runtime; when editing prose in the main thread,
+load it directly rather than paraphrasing it.
+
+The writing standards derive from *The Blogsmith Style Guide*, craft chapters only, with the
+journal's own rejections recorded at the end of the skill file (no second person, no closing
+call to action, sentence case, no SEO keyword structure).
+
 ## Structure
 
 ```
 src/pages/            routes (file-based)
-src/layouts/          BaseLayout.astro (head, header, footer, reveal observer)
+src/layouts/          BaseLayout.astro (head, header, footer, theme bootstrap)
 src/components/       Header, Footer, Newsletter, SEO, PostCard, JournalRow, PhotoGallery
 src/content/journal/     one Markdown file per essay
 src/content.config.ts journal schema
@@ -35,7 +61,7 @@ src/assets/photography/ 69 source JPGs
 ## Design system (overrides the workspace Suger system)
 
 This project intentionally does **not** use the Suger navy/orange/Lexend palette. It is a nature
-journal: warm paper, forest ink, rust accent, serif display type.
+journal: warm paper, forest ink, oxidised-green accent, serif display type.
 
 | Token         | Light     | Dark      |
 | ------------- | --------- | --------- |
@@ -44,7 +70,7 @@ journal: warm paper, forest ink, rust accent, serif display type.
 | `--text`      | `#161c18` | `#eef1e8` |
 | `--muted`     | `#5a665d` | `#9aa79b` |
 | `--brand`     | `#1e3a2c` | `#b7d3b8` |
-| `--accent`    | `#9c4623` | `#e3a07c` |
+| `--accent`    | `#2f6b5a` | `#86c9aa` |
 | `--footer-bg` | `#14251b` | `#080d0a` |
 
 Rules:
@@ -52,11 +78,21 @@ Rules:
 - All colours go through tokens in `src/styles/global.css`. No hard-coded hex in components except
   the light-on-image text in the hero/lightbox, which uses fixed cream values by design.
 - Type scale uses `--step-*` clamps. Do not add ad-hoc font sizes.
+- Every heading needs an explicit `--step-*` size. A bare `h1`–`h4` falls back to the browser's
+  1.5em default, which silently breaks the scale.
+- `.prose` sets `grid-column: 2` for the post layout. Any single-column container that reuses it
+  must reset the column explicitly.
 - Spacing uses `--gutter`, `--section-y`, and rem increments.
 - Radius is 2px. Do not add rounded cards.
+- Labels are sentence case. No uppercase micro-labels, no letter-spacing on labels, and no
+  coloured single word inside a headline. Hierarchy comes from size, weight, and space.
+- Motion is one orchestrated entrance on the home hero, and nothing else. No per-section
+  reveal or fade-up patterns.
 - Every interactive element needs a visible focus state and a ≥44px touch target where it is a
   primary control.
 - Motion must be disabled or neutralised under `prefers-reduced-motion: reduce`.
+- Numbered markers are only used where the content is genuinely ordered (topic rank, the
+  working-principles list). Do not number sections just to number them.
 
 ## Internal links
 

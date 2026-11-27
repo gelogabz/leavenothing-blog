@@ -17,7 +17,6 @@ const topics = groupPostsByTopic(posts);
   <header class="page-head">
     <div class="shell page-head-inner">
       <div>
-        <p class="eyebrow">Subjects</p>
         <h1>Threads to follow.</h1>
       </div>
       <p class="page-deck">
@@ -33,7 +32,7 @@ const topics = groupPostsByTopic(posts);
         {
           topics.map((topic, index) => (
             <li>
-              <a class="topic-row" href={url(`/tags/${tagSlug(topic.key)}/`)} data-reveal>
+              <a class="topic-row" href={url(`/tags/${tagSlug(topic.key)}/`)}>
                 <span class="topic-index">{String(index + 1).padStart(2, '0')}</span>
                 <h2>{topic.label}</h2>
                 <p>{topic.blurb}</p>
@@ -50,9 +49,8 @@ const topics = groupPostsByTopic(posts);
 
   <section class="section">
     <div class="shell">
-      <div class="section-head" data-reveal>
+      <div class="section-head">
         <div>
-          <p class="eyebrow">Latest in every thread</p>
           <h2>Start anywhere</h2>
         </div>
         <a class="link-arrow section-link" href={url('/journal/')}>Full archive</a>

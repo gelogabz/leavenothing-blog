@@ -35,7 +35,7 @@ gallery:
     caption: "Ten thousand roses that will never wilt, Cordova, Cebu."
 ---
 
-Rain lilies only show up after it rains. You will not see them on a dry week, and you cannot really plan for them; they come up fast, open, and then they are done, sometimes within a day. People plant them anyway. I keep a photograph of some on a wet path because the timing of the whole thing is the point.
+Rain lilies only show up after it rains. You will not see them on a dry week, and you cannot plan for them; they come up fast, open, and then they are done, sometimes within a day. People plant them anyway. I keep a photograph of some on a wet path because the timing of the whole thing is the point.
 
 A flower that lasts one day looks, from the outside, like waste.
 
@@ -43,7 +43,7 @@ A flower that lasts one day looks, from the outside, like waste.
 
 The pretty part of a flower exists for exactly one reason, and it is not us. A flower is a reproductive organ. The petals, the colour, the scent, the shape, the nectar — all of it is a mechanism for getting pollen from one plant to another, usually by hiring an animal to do the carrying.
 
-So the colour is advertising. The scent is advertising. The nectar is the fee. A bee that flies in and leaves covered in pollen has just been paid, and the flower has just got what it wanted. Nothing about this is decorative. It is a transaction, and it runs on the fact that insects read colour and smell extremely well and think about food constantly.
+So the colour is advertising. The scent is advertising. The nectar is the fee. A bee that flies in and leaves covered in pollen has been paid, and the flower has got what it wanted. Nothing about this is decorative. It is a transaction, and it runs on the fact that insects read colour and smell extremely well and think about food constantly.
 
 Once you know that, a flowerbed stops being a painting and starts being a market.
 
@@ -53,13 +53,13 @@ The clearest example in my own photographs is bougainvillea, which grows over fe
 
 That is not a cheat. It is efficient. Why build a big expensive petal when a leaf will do, so long as something with wings finds it convincing?
 
-The hydrangea works the same trick from a different direction. Its colour is not fixed at all. In acid soil the heads come out blue; in alkaline soil the same plant goes pink. A garden can change the colour of the flowers by changing the ground under them — which tells you how much of this "beauty" is really chemistry wearing a costume.
+The hydrangea works the same trick from a different direction. Its colour is not fixed at all. In acid soil the heads come out blue; in alkaline soil the same plant goes pink. A garden can change the colour of the flowers by changing the ground under them — which tells you how much of this "beauty" is chemistry wearing a costume.
 
 ## Flowers are built to be thrown away
 
 A leaf and a petal are made of the same kind of thing, and they have completely different jobs. The leaf is the factory; it has to keep working. The petal is the signboard; once the message has been delivered it gets dropped, and the plant puts its energy into the seed instead.
 
-That is why flowers are short. Not because they are fragile and sad, but because permanence was never part of the design brief. A bloom is a stage in a process, not a finished object. The whole plant will still be there after the petals fall. In more cases than not, the falling petals are the beginning of the thing that actually matters.
+That is why flowers are short. Not because they are fragile and sad, but because permanence was never part of the design brief. A bloom is a stage in a process. The whole plant will still be there after the petals fall. In more cases than not, the falling petals are the beginning of the thing that matters.
 
 ## The ones nobody planted
 
@@ -73,7 +73,7 @@ The photograph I keep coming back to is the least likely of the set. It is a sin
 
 The building was engineered to be permanent and it is. Concrete, steel, glass, a structure designed to stand for decades with almost nothing asked of it. The rose will be gone in a week. On the day I took the picture it was already slightly past its best.
 
-It is not really a competition. But put a flower next to a building and the flower usually wins the eye, and it wins with something it made itself, out of water and light, in a few days, and does not get to keep.
+It is not a competition. But put a flower next to a building and the flower usually wins the eye, and it wins with something it made itself, out of water and light, in a few days, and does not get to keep.
 
 ## A field of roses that will never wilt
 
@@ -93,4 +93,4 @@ Beauty here is not a reward for being valuable. It is a working part — a sign,
 
 We tend to read the shortness of a flower as loss. I think that reading is ours, not the flower's. The rain lily does not mind that it is gone by Thursday. It was never trying to be remembered. It was only trying to make one more rain lily, and it did — and it did it by being briefly, flagrantly, unreasonably beautiful.
 
-So the reminder is not that things end. It is that ending was always part of how they work. A bloom is a doorway, not a monument, and the fact that it does not last is not the flaw in the design. It is the design.
+So the reminder is that ending was always part of how they work. A bloom is a doorway, not a monument, and the fact that it does not last is not the flaw in the design. It is the design.

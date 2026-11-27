@@ -130,7 +130,6 @@ const heroUrl = new URL(post.data.heroImage.src, Astro.site ?? Astro.url).href;
       }
 
       <footer class="post-end">
-        <p class="eyebrow">Filed under</p>
         <ul class="tag-row" aria-label="Topics">
           {
             post.data.tags.map((tag) => (
@@ -179,9 +178,8 @@ const heroUrl = new URL(post.data.heroImage.src, Astro.site ?? Astro.url).href;
     related.length > 0 && (
       <section class="related" aria-labelledby="related-title">
         <div class="shell">
-          <div class="section-head" data-reveal>
+          <div class="section-head">
             <div>
-              <p class="eyebrow">Keep reading</p>
               <h2 id="related-title">Related notes</h2>
             </div>
             <a class="link-arrow section-link" href={url('/journal/')}>

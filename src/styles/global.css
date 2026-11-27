@@ -19,7 +19,7 @@
   --line-strong: #b8b2a1;
   --brand: #1e3a2c;
   --brand-2: #2e5540;
-  --accent: #9c4623;
+  --accent: #2f6b5a;
   --accent-ink: #ffffff;
   --button-bg: #1e3a2c;
   --button-text: #f7f4ea;
@@ -61,8 +61,8 @@
   --line-strong: #445248;
   --brand: #b7d3b8;
   --brand-2: #cfe2cd;
-  --accent: #e3a07c;
-  --accent-ink: #1a0f08;
+  --accent: #86c9aa;
+  --accent-ink: #0d1a14;
   --button-bg: #eef1e8;
   --button-text: #101612;
   --button-hover: #d6ded0;
@@ -169,6 +169,11 @@ h4 {
   text-wrap: balance;
 }
 
+/* A bare heading must never fall back to the browser's 1.5em default. */
+h2 {
+  font-size: var(--step-2);
+}
+
 p {
   margin: 0;
   text-wrap: pretty;
@@ -215,23 +220,14 @@ hr {
 }
 
 .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
+  display: block;
   margin: 0;
   color: var(--muted);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-.eyebrow::before {
-  content: '';
-  width: 1.5rem;
-  height: 1px;
-  background: currentColor;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.3;
+  text-transform: none;
 }
 
 .section-head {
@@ -311,12 +307,10 @@ hr {
   background: var(--button-bg);
   color: var(--button-text);
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
   line-height: 1;
   text-decoration: none;
-  text-transform: uppercase;
   transition:
     background-color 200ms ease,
     border-color 200ms ease,
@@ -376,11 +370,9 @@ hr {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 0.74rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 .link-arrow::after {
@@ -409,12 +401,10 @@ hr {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   color: var(--muted);
-  font-size: 0.64rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.13em;
   line-height: 1;
   text-decoration: none;
-  text-transform: uppercase;
   transition:
     border-color 200ms ease,
     color 200ms ease,
@@ -481,11 +471,9 @@ a.tag:hover {
   position: relative;
   padding-block: 0.5rem;
   color: var(--text-2);
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 .site-nav a::after {
@@ -602,7 +590,7 @@ a.tag:hover {
 }
 
 .hero h1 {
-  max-width: 11ch;
+  max-width: 20ch;
   margin-top: 1rem;
   font-size: var(--step-5);
   line-height: 0.92;
@@ -611,7 +599,7 @@ a.tag:hover {
 
 .hero h1 em {
   font-style: italic;
-  color: #e9c7a9;
+  color: inherit;
 }
 
 .hero-deck {
@@ -639,9 +627,7 @@ a.tag:hover {
   padding-top: 1rem;
   border-top: 1px solid rgba(247, 244, 234, 0.24);
   color: rgba(247, 244, 234, 0.68);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
 .hero-foot a {
@@ -675,16 +661,12 @@ a.tag:hover {
 }
 
 .intro-statement {
-  max-width: 22ch;
+  max-width: 24ch;
   font-family: var(--font-display);
   font-size: var(--step-4);
+  font-style: italic;
   line-height: 1.02;
   letter-spacing: -0.03em;
-}
-
-.intro-statement em {
-  color: var(--accent);
-  font-style: italic;
 }
 
 .intro-aside {
@@ -716,9 +698,7 @@ a.tag:hover {
 
 .intro-facts span {
   color: var(--muted);
-  font-size: 0.66rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
 /* ---------- Featured post ---------- */
@@ -779,9 +759,7 @@ a.tag:hover {
   gap: 0.3rem;
   margin-top: 1.5rem;
   color: var(--muted);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
 .feature-meta > * + *::before {
@@ -834,10 +812,8 @@ a.tag:hover {
   align-items: center;
   gap: 0.25rem;
   color: var(--muted);
-  font-size: 0.66rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 .post-card-meta > * + *::before {
@@ -905,10 +881,8 @@ a.tag:hover {
   padding: 2.5rem 0.85rem 0.75rem;
   background: linear-gradient(180deg, transparent, rgba(6, 10, 8, 0.68));
   color: #f7f4ea;
-  font-size: 0.64rem;
-  letter-spacing: 0.08em;
+  font-size: 0.8rem;
   opacity: 0;
-  text-transform: uppercase;
   transition: opacity 240ms ease;
 }
 
@@ -984,10 +958,8 @@ a.tag:hover {
 
 .topic-count {
   color: var(--muted);
-  font-size: 0.66rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   white-space: nowrap;
 }
 
@@ -1164,10 +1136,8 @@ a.tag:hover {
   margin-bottom: 1rem;
   color: var(--footer-muted);
   font-family: var(--font-sans);
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
 }
 
 .footer-col ul {
@@ -1242,9 +1212,7 @@ a.tag:hover {
 .page-head .page-meta {
   margin-top: 1.2rem;
   color: var(--muted);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
 /* ---------- Journal list ---------- */
@@ -1308,9 +1276,7 @@ a.tag:hover {
   gap: 0.25rem;
   margin-top: 0.7rem;
   color: var(--muted);
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
 .journal-meta > * + *::before {
@@ -1323,10 +1289,8 @@ a.tag:hover {
   justify-items: end;
   gap: 0.6rem;
   color: var(--muted);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
+  font-size: 0.8rem;
   text-align: right;
-  text-transform: uppercase;
 }
 
 .journal-side .arrow {
@@ -1355,11 +1319,9 @@ a.tag:hover {
   padding: 0.5rem 0.9rem;
   border: 1px solid var(--line);
   color: var(--text);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 .pagination a:hover {
@@ -1384,9 +1346,7 @@ a.tag:hover {
   align-items: center;
   gap: 0.45rem;
   color: var(--muted);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
 .breadcrumb a {
@@ -1420,9 +1380,7 @@ a.tag:hover {
   gap: 0.3rem;
   margin-top: 1.5rem;
   color: var(--muted);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
 .post-meta > * + *::before {
@@ -1474,10 +1432,8 @@ a.tag:hover {
   margin-bottom: 0.75rem;
   color: var(--muted);
   font-family: var(--font-sans);
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
 }
 
 .post-aside ol {
@@ -1675,10 +1631,8 @@ a.tag:hover {
 
 .post-nav span {
   color: var(--muted);
-  font-size: 0.64rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .post-nav strong {
@@ -1714,10 +1668,8 @@ a.tag:hover {
   border-radius: var(--radius);
   background: transparent;
   color: var(--muted);
-  font-size: 0.66rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
@@ -1773,10 +1725,8 @@ a.tag:hover {
   padding: 2.2rem 0.8rem 0.7rem;
   background: linear-gradient(180deg, transparent, rgba(6, 10, 8, 0.72));
   color: #f7f4ea;
-  font-size: 0.64rem;
-  letter-spacing: 0.07em;
+  font-size: 0.8rem;
   opacity: 0;
-  text-transform: uppercase;
   transition: opacity 220ms ease;
 }
 
@@ -1886,14 +1836,23 @@ a.tag:hover {
 
 .about-grid {
   display: grid;
-  grid-template-columns: minmax(0, 8.5rem) minmax(0, 62ch);
-  gap: clamp(1.5rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(0, 1fr);
   padding-block: clamp(2.5rem, 6vw, 5rem);
   border-top: 1px solid var(--line);
 }
 
-.about-grid .prose {
-  grid-column: 2;
+.about-grid > * {
+  max-width: var(--measure);
+}
+
+/* The shared .prose class assumes the post grid's second column. */
+.about-grid > .prose {
+  grid-column: 1;
+}
+
+/* Section headings match across all three about blocks. */
+.about-grid h2 {
+  font-size: var(--step-3);
 }
 
 .about-grid .prose > p:first-of-type::first-letter {
@@ -1902,13 +1861,6 @@ a.tag:hover {
   color: inherit;
   font-size: inherit;
   line-height: inherit;
-}
-
-.about-index {
-  color: var(--muted);
-  font-family: var(--font-display);
-  font-size: var(--step-1);
-  font-variant-numeric: tabular-nums;
 }
 
 .principle-list {
@@ -1996,10 +1948,8 @@ a.tag:hover {
   display: block;
   margin-bottom: 0.45rem;
   color: var(--muted);
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .contact-grid {
@@ -2046,10 +1996,8 @@ a.tag:hover {
 
 .field label {
   color: var(--muted);
-  font-size: 0.66rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .field input,
@@ -2094,10 +2042,8 @@ a.tag:hover {
 .contact-form legend {
   margin-bottom: 0.35rem;
   color: var(--muted);
-  font-size: 0.66rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 /* ---------- FAQ ---------- */
@@ -2208,19 +2154,50 @@ a.tag:hover {
   justify-content: center;
 }
 
-/* ---------- Reveal / motion ---------- */
+/* ---------- Motion: one entrance, on the hero ---------- */
 
-.js [data-reveal] {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+@keyframes hero-image-settle {
+  from {
+    transform: scale(1.045);
+  }
+  to {
+    transform: none;
+  }
 }
 
-.js [data-reveal].is-visible {
-  opacity: 1;
-  transform: none;
+@keyframes hero-line-settle {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-media img {
+  animation: hero-image-settle 1500ms cubic-bezier(0.16, 0.8, 0.24, 1) both;
+}
+
+.hero-inner > * {
+  animation: hero-line-settle 800ms cubic-bezier(0.16, 0.8, 0.24, 1) both;
+}
+
+.hero-inner > :nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.hero-inner > :nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.hero-inner > :nth-child(4) {
+  animation-delay: 270ms;
+}
+
+.hero-inner > :nth-child(5) {
+  animation-delay: 360ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2234,11 +2211,6 @@ a.tag:hover {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .js [data-reveal] {
-    opacity: 1;
-    transform: none;
   }
 }
 
@@ -2292,14 +2264,6 @@ a.tag:hover {
   .prose,
   .post-gallery,
   .post-end {
-    grid-column: 1;
-  }
-
-  .about-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .about-grid .prose {
     grid-column: 1;
   }
 

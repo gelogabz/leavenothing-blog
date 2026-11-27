@@ -19,7 +19,7 @@ gallery:
 
 Rain lilies are easy to miss. They appear after rain, open fast, and are gone before you get around to looking them up. They grow in the cracks of paths, at the edge of lawns, in the thin soil between stones. They are not rare. They are not charismatic. They are, in the language of conservation, ordinary.
 
-Ordinary is where most ecology actually happens.
+Ordinary is where most ecology happens.
 
 ## The unglamorous majority
 
@@ -45,7 +45,7 @@ Naming is not the same as knowing, but it is a start. Once you know a plant is a
 
 ## The risk of tidying up
 
-A lot of urban and roadside "improvement" is actually removal. We cut the weeds, mow the flowers, spray the edges, and replace them with paving or ornamental species that support very little. The result can look neat and be ecologically poorer.
+A lot of urban and roadside "improvement" is removal. We cut the weeds, mow the flowers, spray the edges, and replace them with paving or ornamental species that support little. The result can look neat and be ecologically poorer.
 
 This does not mean every patch of weeds is a treasure. Some are invasive. Some are hazardous. But the default assumption — that tidy is better — is worth questioning. A little mess is often a functioning habitat.
 

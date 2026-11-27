@@ -17,7 +17,7 @@ gallery:
     caption: "A lookout with nothing but sky behind."
 ---
 
-The name of this site is the rule. Leave nothing. Take only photographs. Leave only footprints. Sometimes not even those.
+Take only photographs. Leave only footprints. Sometimes not even those.
 
 It is a familiar outdoor slogan, and like most familiar slogans it is easy to say and harder to practise. The photographs are not neutral. They change the places they depict. A geotag can send a thousand people to a fragile trail. A beautiful image can turn a nesting site into an attraction. A caption can flatten a complex place into a mood.
 
@@ -41,7 +41,7 @@ The antidote is not to stop photographing. It is to be honest about the frame.
 
 Most of the best photographs I have made were the result of waiting, not arriving. The light changed. The fog moved. A bird landed. Someone laughed. The frame I had planned was rarely the one that worked.
 
-Waiting is also a form of respect. It gives the place time to stop reacting to you. It gives you time to notice what is actually happening rather than what you expected.
+Waiting is also a form of respect. It gives the place time to stop reacting to you. It gives you time to notice what is happening rather than what you expected.
 
 This is not a argument for technical perfection. It is an argument for attention. A sharp photograph of nothing is still a photograph of nothing.
 
@@ -69,4 +69,4 @@ If I do this well, the site will be a record of attention: a ridge before the ra
 
 The rest is up to the place.
 
-*Further reading:* [Leave No Trace](https://lnt.org/), [Ethics of Wildlife Photography](https://www.naturephotographers.net/), and [Philippine Clearing House Mechanism](https://phchm.ph/).
+*Further reading:* [Leave No Trace](https://lnt.org/), [Nature Photographers Network](https://www.naturephotographers.net/), and [Philippine Clearing House Mechanism](https://phchm.ph/).

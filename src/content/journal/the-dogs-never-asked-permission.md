@@ -1,9 +1,9 @@
 ---
 title: "The dogs never asked permission"
-description: "Two small dogs spent most of their lives on city pavements. Then we moved to the coast, and they worked out what outside is actually for."
+description: "Two small dogs spent most of their lives on city pavements. Then we moved to the coast, and they worked out what outside is for."
 pubDate: 2026-11-28
 heroImage: ../../assets/photography/46-dog-beach-walk-sunset.jpg
-heroAlt: "A person walks a brown dog on a wet beach at sunset, both reflected in the film of water, with a bank of cloud stacked behind them."
+heroAlt: "A person walks a brown dog on a wet beach at sunset, both reflected in the film of water."
 tags: ["people", "philippines", "coasts"]
 gallery:
   - src: ../../assets/photography/45-dogs-siquijor-shallows.jpg
@@ -81,7 +81,7 @@ What they have learned instead is that the outside is not a corridor between the
 
 We got dogs and then we moved, and it's easy to dress that up as a gift to them. It was mostly a gift to me. But I do think this is the most useful thing anyone has done for these two: not more love, not better food — a horizon.
 
-Nobody taught them to be free. Both times we walked out onto the sand they simply checked, the way any sensible animal would, whether the lead was still attached. It wasn't, and out they went, and neither of them looked back to ask permission.
+Nobody taught them to be free. Both times we walked out onto the sand they checked, the way any sensible animal would, whether the lead was still attached. It wasn't, and out they went, and neither of them looked back to ask permission.
 
 Whatever we are to them, we are now something other than the people who decide where the walk goes. That took moving a long way from a corner where a cat sat on a wall.
 

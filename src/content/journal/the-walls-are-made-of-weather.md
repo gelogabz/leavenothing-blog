@@ -7,22 +7,22 @@ heroAlt: "The dark volcanic-stone facade and bell tower of Daraga Church, with M
 tags: ["architecture", "philippines", "people", "climate"]
 gallery:
   - src: ../../assets/photography/36-basilica-santo-nino-cebu.jpg
-    alt: "The long white stone flank of the Basilica del Santo Niño in Cebu City, with dark louvered windows and a red-tiled bell tower at the far end."
+    alt: "The white stone flank of the Basilica del Santo Niño in Cebu City, with dark louvered windows and a red-tiled bell tower."
     caption: "Basilica del Santo Niño, Cebu City, founded 1565."
   - src: ../../assets/photography/37-st-philomene-alcala.jpg
-    alt: "A wide red brick church facade with a tall bell tower capped by a red dome, white statues in niches, and a Christ the King monument on a brick plinth in front."
+    alt: "A red brick church facade with a tall tower capped by a red dome, statues in niches, and a monument on a brick plinth."
     caption: "St. Philomene Church, Alcala, Cagayan."
   - src: ../../assets/photography/38-san-agustin-belfry-siquijor.jpg
-    alt: "An old dark coral-stone bell tower with arched openings stands beside a modern concrete church under a clear sky, with festival bunting strung overhead."
+    alt: "A dark coral-stone bell tower with arched openings stands beside a modern concrete church, festival bunting overhead."
     caption: "The 1863 belfry beside the modern church, San Juan, Siquijor."
   - src: ../../assets/photography/39-sto-nino-siquijor.jpg
-    alt: "A small white church with black window trim, arched iron grilles, and a curving gable, with a white Sto. Niño sign at the gate."
+    alt: "A small white church with black window trim, arched iron grilles, and a white Sto. Niño sign at the gate."
     caption: "Sto. Niño Church, Siquijor."
   - src: ../../assets/photography/41-barcelona-church-dusk.jpg
     alt: "The weathered stone facade and bell tower of Barcelona Church at dusk, silhouetted against a deep blue sky."
     caption: "St. Joseph Parish Church, Barcelona, Sorsogon, at dusk."
   - src: ../../assets/photography/42-st-anthony-gubat-night.jpg
-    alt: "A church facade and twin bell towers outlined in white lights at night, with a neon Christmas greeting above the door and tricycles parked in front."
+    alt: "A church facade and twin bell towers outlined in white lights at night, with tricycles parked in front."
     caption: "St. Anthony of Padua Parish, Gubat, at Christmas."
   - src: ../../assets/photography/43-farmplate-chapel.jpg
     alt: "A small white wooden chapel with a pointed steeple and Gothic windows, standing among coconut palms under a blue sky."

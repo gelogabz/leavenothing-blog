@@ -65,14 +65,15 @@ Deliberately overrides the workspace Suger palette. This is a nature journal, no
 | Text | `#161c18` | `#eef1e8` |
 | Muted text | `#5a665d` | `#9aa79b` |
 | Brand green | `#1e3a2c` | `#b7d3b8` |
-| Accent (rust) | `#9c4623` | `#e3a07c` |
+| Accent (green) | `#2f6b5a` | `#86c9aa` |
 | Footer | `#14251b` | `#080d0a` |
 
 - Display type: **Newsreader** (variable, self-hosted)
 - UI/body type: **Inter** (variable, self-hosted)
 - Layout: 78rem shell, 92rem wide shell, 68ch measure, Swiss rule lines, generous section rhythm
 - Radius: 2px (near-square, editorial)
-- Motion: reveal-on-scroll, image scale on hover, all disabled under `prefers-reduced-motion`
+- Type rules: sentence-case labels, no coloured word inside a headline
+- Motion: one hero entrance on the home page, image scale on hover, all disabled under `prefers-reduced-motion`
 - Theme: light by default, follows system preference, manual toggle stored in `localStorage`
 
 ## Accessibility and performance notes

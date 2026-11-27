@@ -113,7 +113,6 @@ const groups = [
   <header class="page-head">
     <div class="shell page-head-inner">
       <div>
-        <p class="eyebrow">Sources</p>
         <h1>A working list.</h1>
       </div>
       <p class="page-deck">
@@ -127,9 +126,8 @@ const groups = [
     groups.map((group) => (
       <section class="section" aria-labelledby={`group-${group.kind.toLowerCase().replace(/\s+/g, '-')}`}>
         <div class="shell">
-          <div class="section-head" data-reveal>
+          <div class="section-head">
             <div>
-              <p class="eyebrow">{group.kind}</p>
               <h2 id={`group-${group.kind.toLowerCase().replace(/\s+/g, '-')}`}>
                 {group.kind}
               </h2>
@@ -138,7 +136,7 @@ const groups = [
 
           <div class="resource-list">
             {group.items.map((item) => (
-              <div class="resource-item" data-reveal>
+              <div class="resource-item">
                 <span class="resource-kind">External link</span>
                 <h3><a href={item.href} target="_blank" rel="noopener noreferrer">{item.title}</a></h3>
                 <p>{item.body}</p>
@@ -152,8 +150,7 @@ const groups = [
 
   <section class="section">
     <div class="shell split">
-      <div class="split-body" data-reveal>
-        <p class="eyebrow">A caveat</p>
+      <div class="split-body">
         <h2>Check the date before you cite it.</h2>
         <p>
           Environmental data ages quickly. Forest loss figures, protected area boundaries, and
@@ -165,8 +162,7 @@ const groups = [
           are noted at the bottom of the affected essay.
         </p>
       </div>
-      <div class="split-body" data-reveal>
-        <p class="eyebrow">Missing something?</p>
+      <div class="split-body">
         <h2>Suggest a source.</h2>
         <p>
           Community groups, local monitoring projects, and academic labs are under-represented
