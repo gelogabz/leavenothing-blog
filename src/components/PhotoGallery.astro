@@ -1,8 +1,27 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import { PHOTO_TOPICS, photos, type PhotoTopic } from '../data/photos';
+import { IMAGE_QUALITY, IMAGE_WIDTHS } from '../lib/images';
 
 const topics = Object.entries(PHOTO_TOPICS) as [PhotoTopic, string][];
+
+// The lightbox opens the largest variant we already build, so the full-size
+// source file never has to be published.
+const LIGHTBOX_WIDTH = IMAGE_WIDTHS[IMAGE_WIDTHS.length - 1];
+
+const lightboxSrc = new Map(
+  await Promise.all(
+    photos.map(async (photo) => {
+      const { src } = await getImage({
+        src: photo.src,
+        width: LIGHTBOX_WIDTH,
+        format: 'webp',
+        quality: IMAGE_QUALITY,
+      });
+      return [photo.file, src] as const;
+    })
+  )
+);
 ---
 
 <div class="filter-bar" role="group" aria-label="Filter photographs by subject" data-filters>
@@ -29,7 +48,7 @@ const topics = Object.entries(PHOTO_TOPICS) as [PhotoTopic, string][];
           data-topic={photo.topic}
           data-orientation={portrait ? 'portrait' : 'landscape'}
           data-featured={photo.featured ? 'true' : 'false'}
-          data-full={photo.src.src}
+          data-full={lightboxSrc.get(photo.file)}
           data-caption={photo.caption}
           data-alt={photo.alt}
           aria-label={`View photograph: ${photo.alt}`}
@@ -37,10 +56,10 @@ const topics = Object.entries(PHOTO_TOPICS) as [PhotoTopic, string][];
           <Image
             src={photo.src}
             alt=""
-            widths={[400, 640, 900, 1200]}
+            widths={IMAGE_WIDTHS}
             sizes="(max-width: 520px) 100vw, (max-width: 760px) 50vw, (max-width: 1100px) 50vw, 33vw"
             format="webp"
-            quality={82}
+            quality={IMAGE_QUALITY}
             loading="lazy"
           />
           <span class="photo-card-caption">{photo.caption}</span>

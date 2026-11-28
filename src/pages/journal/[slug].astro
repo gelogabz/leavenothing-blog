@@ -7,6 +7,7 @@ import PostCard from '../../components/PostCard.astro';
 import { formatLongDate, readingTime, tagLabel, tagSlug } from '../../lib/format';
 import { getPublishedPosts } from '../../lib/posts';
 import { url } from '../../lib/url';
+import { IMAGE_QUALITY, IMAGE_WIDTHS } from '../../lib/images';
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
@@ -74,10 +75,10 @@ const heroUrl = new URL(post.data.heroImage.src, Astro.site ?? Astro.url).href;
         <Image
           src={post.data.heroImage}
           alt={post.data.heroAlt}
-          widths={[800, 1200, 1600, 2000]}
+          widths={IMAGE_WIDTHS}
           sizes="(max-width: 1200px) 100vw, 92rem"
           format="webp"
-          quality={84}
+          quality={IMAGE_QUALITY}
           loading="eager"
           fetchpriority="high"
         />
@@ -116,10 +117,10 @@ const heroUrl = new URL(post.data.heroImage.src, Astro.site ?? Astro.url).href;
                 <Image
                   src={image.src}
                   alt={image.alt}
-                  widths={[480, 720, 960, 1280]}
+                  widths={IMAGE_WIDTHS}
                   sizes={i === 0 ? '(max-width: 980px) 100vw, 46rem' : '(max-width: 760px) 100vw, 22rem'}
                   format="webp"
-                  quality={82}
+                  quality={IMAGE_QUALITY}
                   loading="lazy"
                 />
                 {image.caption && <figcaption>{image.caption}</figcaption>}

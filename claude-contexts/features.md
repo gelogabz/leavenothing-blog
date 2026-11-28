@@ -27,6 +27,8 @@ Current state of the rebuilt Astro site. Replaces the 2022 static HTML/Bootstrap
 | Dark/light theme with system preference + toggle | Done | `src/layouts/BaseLayout.astro`, `Header.astro` |
 | Mobile menu | Done | `Header.astro` |
 | Hero entrance animation (single, home only) | Done | `global.css` |
+| Shared image width ladder + single quality | Done | `src/lib/images.ts` |
+| Unit tests for base-path helpers | Done | `test/base-path.test.ts` (`npm test`) |
 | Footer cross-link to the portfolio | Done | `Footer.astro` — links to `gelogabz.github.io/gelobaring-intro/` |
 
 ## Content

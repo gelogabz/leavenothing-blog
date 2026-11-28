@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PhotoGallery from '../components/PhotoGallery.astro';
 import { getPhoto, photos } from '../data/photos';
 import { url } from '../lib/url';
+import { IMAGE_QUALITY, IMAGE_WIDTHS } from '../lib/images';
 
 const landscape = photos.filter((photo) => photo.src.width >= photo.src.height).length;
 const portrait = photos.length - landscape;
@@ -48,10 +49,10 @@ const closingPhoto = getPhoto('21-the-branch.jpg');
         <Image
           src={closingPhoto.src}
           alt={closingPhoto.alt}
-          widths={[480, 720, 960]}
+          widths={IMAGE_WIDTHS}
           sizes="(max-width: 980px) 100vw, 45vw"
           format="webp"
-          quality={82}
+          quality={IMAGE_QUALITY}
           loading="lazy"
         />
       </div>

@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import { formatDate } from '../lib/format';
 import { url } from '../lib/url';
+import { IMAGE_QUALITY, IMAGE_WIDTHS } from '../lib/images';
 
 interface Props {
   post: CollectionEntry<'journal'>;
@@ -21,10 +22,10 @@ const href = url(`/journal/${post.id}/`);
     <Image
       src={heroImage}
       alt={heroAlt}
-      widths={[640, 960, 1280, 1600]}
+      widths={IMAGE_WIDTHS}
       sizes="(max-width: 980px) 100vw, 60vw"
       format="webp"
-      quality={84}
+      quality={IMAGE_QUALITY}
     />
   </a>
 

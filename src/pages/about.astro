@@ -7,6 +7,7 @@ import { SITE } from '../consts';
 import portrait from '../assets/photography/08-crater-lake.jpg';
 import ridge from '../assets/photography/09-ridge-first-light.jpg';
 import { url } from '../lib/url';
+import { IMAGE_QUALITY, IMAGE_WIDTHS } from '../lib/images';
 
 const principles = [
   {
@@ -50,10 +51,10 @@ const principles = [
       <Image
         src={portrait}
         alt="The author, in a cap, sitting on a rocky slope above a green crater lake."
-        widths={[400, 640, 900]}
+        widths={IMAGE_WIDTHS}
         sizes="(max-width: 980px) 100vw, 34vw"
         format="webp"
-        quality={82}
+        quality={IMAGE_QUALITY}
         loading="eager"
       />
     </div>
@@ -128,10 +129,10 @@ const principles = [
         <Image
           src={ridge}
           alt="A jagged mountain ridge lit by early sun, with tall grass in the foreground."
-          widths={[480, 720, 960]}
+          widths={IMAGE_WIDTHS}
           sizes="(max-width: 980px) 100vw, 45vw"
           format="webp"
-          quality={82}
+          quality={IMAGE_QUALITY}
           loading="lazy"
         />
       </div>

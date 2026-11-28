@@ -7,10 +7,4 @@ export default defineConfig({
   site: 'https://gelogabz.github.io',
   base: '/leavenothing-blog',
   integrations: [sitemap()],
-  markdown: {
-    shikiConfig: {
-      theme: 'github-light',
-      wrap: true,
-    },
-  },
 });

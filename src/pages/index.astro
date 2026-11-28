@@ -13,6 +13,7 @@ import { featuredPhotos, photos } from '../data/photos';
 import heroImage from '../assets/photography/01-sea-of-clouds.jpg';
 import aboutImage from '../assets/photography/34-branches-at-dusk.jpg';
 import { url } from '../lib/url';
+import { IMAGE_QUALITY, IMAGE_WIDTHS } from '../lib/images';
 
 const posts = await getPublishedPosts();
 const featured = posts[0];
@@ -27,10 +28,10 @@ const highlightPhotos = featuredPhotos.slice(0, 6);
       <Image
         src={heroImage}
         alt="A sea of cloud spilling between forested mountain ridges at dawn."
-        widths={[800, 1200, 1600, 2000]}
+        widths={IMAGE_WIDTHS}
         sizes="100vw"
         format="webp"
-        quality={84}
+        quality={IMAGE_QUALITY}
         loading="eager"
         fetchpriority="high"
       />
@@ -154,10 +155,10 @@ const highlightPhotos = featuredPhotos.slice(0, 6);
               <Image
                 src={photo.src}
                 alt={photo.alt}
-                widths={[400, 640, 900, 1200]}
+                widths={IMAGE_WIDTHS}
                 sizes="(max-width: 760px) 100vw, 33vw"
                 format="webp"
-                quality={82}
+                quality={IMAGE_QUALITY}
                 loading="lazy"
               />
             </a>
@@ -204,10 +205,10 @@ const highlightPhotos = featuredPhotos.slice(0, 6);
         <Image
           src={aboutImage}
           alt="Bare tree branches silhouetted against a blue and orange dusk sky."
-          widths={[480, 720, 960]}
+          widths={IMAGE_WIDTHS}
           sizes="(max-width: 980px) 100vw, 50vw"
           format="webp"
-          quality={82}
+          quality={IMAGE_QUALITY}
           loading="lazy"
         />
       </div>

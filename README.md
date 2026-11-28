@@ -20,7 +20,7 @@ through `url()` in `src/lib/url.ts`, which prefixes the base.
 | Images | `astro:assets` → responsive WebP via Sharp |
 | Fonts | Self-hosted Newsreader (display) + Inter (UI) via Fontsource |
 | Feeds | `@astrojs/rss`, `@astrojs/sitemap` |
-| JS | Small inline scripts only: theme toggle, mobile menu, gallery filter/lightbox, reveal-on-scroll |
+| JS | Small inline scripts only: theme toggle, mobile menu, gallery filter/lightbox |
 
 No Bootstrap, no jQuery, no analytics, no tracking pixels, no comment system.
 

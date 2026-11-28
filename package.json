@@ -11,7 +11,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "node --test test/*.test.ts"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

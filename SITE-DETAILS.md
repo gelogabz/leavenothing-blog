@@ -6,7 +6,8 @@ still placeholder.
 ## Routes
 
 All routes are served under the GitHub Pages base path: `https://gelogabz.github.io/leavenothing-blog/`.
-Internal links are generated with `url()` from `src/lib/url.ts`.
+Internal links are generated with `url()` from `src/lib/url.ts`, which wraps the pure helpers
+in `src/lib/base-path.ts` (unit-tested by `npm test`).
 
 | Route | File | Notes |
 |---|---|---|

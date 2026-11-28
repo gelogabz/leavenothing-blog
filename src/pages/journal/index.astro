@@ -7,6 +7,7 @@ import FeaturedEssay from '../../components/FeaturedEssay.astro';
 import { getPublishedPosts } from '../../lib/posts';
 import { getPhoto } from '../../data/photos';
 import { url } from '../../lib/url';
+import { IMAGE_QUALITY, IMAGE_WIDTHS } from '../../lib/images';
 
 const posts = await getPublishedPosts();
 const [lead, ...rest] = posts;
@@ -83,10 +84,10 @@ const archivePhoto = getPhoto('01-sea-of-clouds.jpg');
         <Image
           src={archivePhoto.src}
           alt={archivePhoto.alt}
-          widths={[480, 720, 960]}
+          widths={IMAGE_WIDTHS}
           sizes="(max-width: 980px) 100vw, 45vw"
           format="webp"
-          quality={82}
+          quality={IMAGE_QUALITY}
           loading="lazy"
         />
       </div>

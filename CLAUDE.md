@@ -54,8 +54,12 @@ src/data/photos.ts    photo metadata (alt, caption, topic, featured)
 src/lib/format.ts     dates, reading time, tag slugs/labels
 src/lib/posts.ts      published-post queries (single source for drafts + ordering)
 src/lib/topics.ts     topic grouping for home and topics index
+src/lib/images.ts     shared image width ladder + quality
+src/lib/base-path.ts  pure base-path helpers (applyBase/removeBase)
+src/lib/url.ts        base-aware link helpers, reads import.meta.env
 src/styles/global.css design tokens + all styles
 src/assets/photography/ 69 source JPGs
+test/                 node:test unit tests (npm test)
 ```
 
 ## Design system (overrides the workspace Suger system)
@@ -91,6 +95,13 @@ Rules:
 - Every interactive element needs a visible focus state and a ≥44px touch target where it is a
   primary control.
 - Motion must be disabled or neutralised under `prefers-reduced-motion: reduce`.
+- Every responsive image uses `IMAGE_WIDTHS` and `IMAGE_QUALITY` from `src/lib/images.ts`.
+  Never write an ad-hoc `widths={[...]}` or `quality={n}` — different values make the image
+  service emit a second encoding of the same photo at the same size. Source photos are
+  1600px wide, so nothing larger belongs in the ladder.
+- The photography lightbox opens the largest built WebP, not the source JPEG. Pointing it at
+  the original publishes every full-size file for no benefit.
+- Run `npm test` alongside `npm run check` and `npm run build`.
 - Numbered markers are only used where the content is genuinely ordered (topic rank, the
   working-principles list). Do not number sections just to number them.
 

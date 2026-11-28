@@ -1,19 +1,18 @@
+import { applyBase, removeBase } from './base-path';
+
 /**
- * Prefix a root-relative path with the Astro `base` value.
+ * Base-aware link helpers.
  *
- * GitHub Pages project sites are served from `/<repo>/`, so every internal
- * link must include that prefix. `import.meta.env.BASE_URL` is `/` in local
- * dev unless a base is configured, and always ends with a slash.
+ * `import.meta.env.BASE_URL` is `/` in local dev unless a base is configured,
+ * and always ends with a slash. The pure logic lives in `base-path.ts`.
  */
-const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+const BASE = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '');
 
 export function url(path: string): string {
-  if (!path.startsWith('/')) return path;
-  return `${BASE}${path}`;
+  return applyBase(BASE, path);
 }
 
 /** Strip the configured base from a pathname so route comparisons stay simple. */
 export function stripBase(pathname: string): string {
-  if (!BASE || !pathname.startsWith(BASE)) return pathname;
-  return pathname.slice(BASE.length) || '/';
+  return removeBase(BASE, pathname);
 }
